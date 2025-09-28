@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/1 - Api/">
+    <Project Path="src/Jiban.Api/Jiban.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/2 - Application/">
+    <Project Path="src/Jiban.Application/Jiban.Application.csproj" Id="3414b3cb-8543-4d07-979c-50cfe381e645" />
+  </Folder>
+  <Folder Name="/src/3 - Infraestructure/">
+    <Project Path="src/Jiban.Infrastructure/Jiban.Infrastructure.csproj" Id="b14c4616-fa21-4488-aee0-83491249c289" />
+  </Folder>
+  <Folder Name="/src/4 - Domain/">
+    <Project Path="src/Jiban.Domain/Jiban.Domain.csproj" Id="a8d117de-5662-4dec-b57c-ee369442de6b" />
+  </Folder>
+</Solution>
