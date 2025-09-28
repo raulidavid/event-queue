@@ -1,18 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Jiban.Infrastructure.Configuration;
 using Microsoft.Extensions.Configuration;
 using Jiban.Infrastructure.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using Jiban.AspNetCore.Services;
 using StackExchange.Redis;
 using Jiban.Domain.Models;
-using System.Diagnostics;
-using System.Text.Json;
 using Jiban.Domain;
-using System.Text;
-using System;
 
 namespace Jiban.Infrastructure.HostedServices
 {

@@ -5,7 +5,7 @@ using StackExchange.Redis;
 using System.Collections.Generic;
 using Jiban.Domain;
 
-namespace Jiban.Infrastructure.Configuration
+namespace Jiban.Infrastructure
 {
     public class BaseUtil
     {
