@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Jiban.Multitenant" Version="9.12.825" />
+  </ItemGroup>
+
 </Project>
