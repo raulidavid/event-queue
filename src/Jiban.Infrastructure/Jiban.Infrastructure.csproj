@@ -12,10 +12,22 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-rc.2.25502.107" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0-rc.2.25502.107" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0-rc.2.25502.107" />
+    <PackageReference Include="NSwag.MSBuild" Version="14.6.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Jiban.Domain\Jiban.Domain.csproj" />
   </ItemGroup>
+
+	<PropertyGroup>
+		<NSwagDllPath>$(NuGetPackageRoot)nswag.msbuild\14.6.1\tools\Net100\dotnet-nswag.dll</NSwagDllPath>
+	</PropertyGroup>
+
+	<Target Name="NSwag" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug' and Exists('config.nswag')">
+		<Exec Command="dotnet exec &quot;$(NSwagDllPath)&quot; run config.nswag" />
+	</Target>
 
 </Project>

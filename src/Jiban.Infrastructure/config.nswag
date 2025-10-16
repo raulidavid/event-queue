@@ -1,0 +1,51 @@
+{
+  "runtime": "Net100",
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "https://apiqa.jiban.ec:44361/swagger/v1/swagger.json",
+      "output": "./Services/Platform.cs"
+    }
+  },
+  "codeGenerators": {
+    "openApiToCSharpClient": {
+      "generateClientClasses": true,
+      "generateClientInterfaces": true,
+      "injectHttpClient": true,
+      "disposeHttpClient": false,
+      "generateExceptionClasses": true,
+      "exceptionClass": "ApiException",
+      "wrapDtoExceptions": false,
+      "useBaseUrl": true,
+      "generateBaseUrlProperty": true,
+      "generateSyncMethods": false,
+      "clientClassAccessModifier": "public",
+      "typeAccessModifier": "public",
+      "parameterDateTimeFormat": "s",
+      "parameterDateFormat": "yyyy-MM-dd",
+      "generateUpdateJsonSerializerSettingsMethod": true,
+      "className": "{controller}Client",
+      "operationGenerationMode": "MultipleClientsFromOperationId",
+      "namespace": "Jiban.Nswag",
+      "requiredPropertiesMustBeDefined": true,
+      "dateType": "System.DateTimeOffset",
+      "dateTimeType": "System.DateTimeOffset",
+      "timeType": "System.TimeSpan",
+      "timeSpanType": "System.TimeSpan",
+      "arrayType": "System.Collections.Generic.ICollection",
+      "arrayInstanceType": "System.Collections.ObjectModel.Collection",
+      "dictionaryType": "System.Collections.Generic.IDictionary",
+      "dictionaryInstanceType": "System.Collections.Generic.Dictionary",
+      "classStyle": "Poco",
+      "jsonLibrary": "SystemTextJson",
+      "generateDefaultValues": true,
+      "generateDataAnnotations": true,
+      "inlineNamedTuples": true,
+      "generateDtoTypes": true,
+      "useFullTypeNames": true,
+      "includedOperationIds": [
+        "Sri_SendEmailDocument"
+      ],
+      "output": "./Services/Platform.cs"
+    }
+  }
+}
