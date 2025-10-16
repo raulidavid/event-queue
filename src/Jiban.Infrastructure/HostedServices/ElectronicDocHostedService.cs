@@ -1,5 +1,6 @@
 ﻿using Jiban.BaseCode.PermissionsCode;
 using Jiban.Nswag;
+using JibanPermissions.Services;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 
@@ -444,9 +445,11 @@ namespace Jiban.Infrastructure.HostedServices
                 // PROCESAMIENTO REAL DEL EVENTO
                 _logger.LogInformation("📄 Iniciando procesamiento de documentos electrónicos para: {Identificacion}", identificacion);
                 
+                var tokenAndRefreshToken = await _tokenBuilder.GenerateTokenAndRefreshTokenAsync(Guid.NewGuid());
+                _tokenAccessor.SetToken(tokenAndRefreshToken.Token);
                 // Usar el servicio de documentos electrónicos
-                await _electronicDocService.ProcessElectronicDocumentsAsync(identificacion, CancellationToken.None);
-                
+                //await _electronicDocService.ProcessElectronicDocumentsAsync(identificacion, CancellationToken.None);
+
                 // Aquí puedes agregar tu lógica de negocio específica:
                 // await ProcesarSolicitudCheques(eventAuthorizeDocument);
                 // await ProcesarGeneracionDocumentacion(eventAuthorizeDocument);
