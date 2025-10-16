@@ -1,57 +1,75 @@
-﻿using Jiban.BaseCode.PermissionsCode;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Jiban.Infrastructure.HostedServices;
-using Jiban.Infrastructure.Services;
-using Jiban.Nswag;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Jiban.BaseCode.PermissionsCode;
+using Jiban.Infrastructure.Services;
+using Polly.Extensions.Http;
+using Polly;
 
 namespace Jiban.Infrastructure.Configuration
 {
-    /// <summary>
-    /// Extension methods for configuring infrastructure services and hosted services
-    /// in the dependency injection container.
-    /// </summary>
     public static partial class InfraestructureExtension
     {
-        /// <summary>
-        /// Registers Jiban hosted services with the service collection based on configuration settings.
-        /// </summary>
-        /// <param name="services">The service collection to add services to.</param>
-        /// <param name="configuration">The configuration instance containing application settings.</param>
-        /// <returns>The service collection for method chaining.</returns>
         public static IServiceCollection AddJibanHostedServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Check if background processing is enabled via configuration
-            // The PROCESS configuration key determines whether to run hosted services
-            if(Convert.ToBoolean(configuration[JibanConstants.PROCESS]))
+            if (Convert.ToBoolean(configuration[JibanConstants.PROCESS]))
             {
-                // Register the electronic document processing hosted service
-                // This service will run in the background to process electronic documents
                 services.AddHostedService<ElectronicDocHostedService>();
             }
 
             return services;
         }
 
-        /// <summary>
-        /// Registers infrastructure services with the service collection.
-        /// These are the core business services used throughout the application.
-        /// </summary>
-        /// <param name="services">The service collection to add services to.</param>
-        /// <param name="configuration">The configuration instance (currently unused but available for future use).</param>
-        /// <returns>The service collection for method chaining.</returns>
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Register the electronic document service with scoped lifetime
-            // Scoped services are created once per request in web applications
             services.AddScoped<IElectronicDocService, ElectronicDocService>();
-            services.AddHttpClient<IAccountClient, AccountClient>(client =>
+            services.AddSingleton<ITokenAccessor, RuntimeTokenAccessor>();
+            services.AddTransient<DynamicJwtHandler>();
+
+            var baseUrl = configuration["NswagBaseUrl"];
+            if (string.IsNullOrWhiteSpace(baseUrl))
+                throw new InvalidOperationException("Missing env var: NswagBaseUrl");
+
+            services.AddHttpClient(string.Empty, client =>
             {
-                client.BaseAddress = new Uri("https://apiqa.jiban.ec:44361/");
+                client.BaseAddress = new Uri(baseUrl);
+            })
+            .AddHttpMessageHandler<DynamicJwtHandler>()
+            .AddPolicyHandler(GetRetryPolicy())
+            .AddPolicyHandler(GetCircuitBreakerPolicy())
+            .AddPolicyHandler(GetTimeoutPolicy())
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
             });
 
-            
             return services;
         }
+
+        private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+        {
+            return HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .OrResult(msg => (int)msg.StatusCode == 429)
+                .WaitAndRetryAsync(3, retryAttempt =>
+                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt + 1)), // 2^(1+1)=4, 2^(2+1)=8, 2^(3+1)=16
+                    onRetry: (outcome, timespan, retryCount, context) =>
+                    {
+                        Console.WriteLine($"[Polly] Retry {retryCount} after {timespan.TotalSeconds}s due to {outcome.Exception?.Message ?? outcome.Result?.StatusCode.ToString()}");
+                    });
+        }
+
+
+        private static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
+        {
+            return HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
+        }
+
+        private static IAsyncPolicy<HttpResponseMessage> GetTimeoutPolicy()
+        {
+            return Policy.TimeoutAsync<HttpResponseMessage>(10);
+        }
     }
-} 
+}
