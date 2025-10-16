@@ -1,6 +1,6 @@
 ﻿using Jiban.BaseCode.PermissionsCode;
+using Jiban.Nswag;
 using Microsoft.Extensions.Logging;
-using Jiban.Domain.Models;
 using StackExchange.Redis;
 
 namespace Jiban.Infrastructure.HostedServices
@@ -318,12 +318,12 @@ namespace Jiban.Infrastructure.HostedServices
                 }
 
                 // Deserializar el mensaje
-                EventAuthorizeDocumentModel eventAuthorizeDocument;
+                DocumentEmailRequest documentEmailRequest;
                 try
                 {
-                    eventAuthorizeDocument = _eventService.GetMessage<EventAuthorizeDocumentModel>(mensaje);
-                    _logger.LogInformation("{SuccessEmoji} Mensaje deserializado correctamente: IdSolicitud={IdSolicitud}, IdSolicitudDetalle={IdSolicitudDetalle}, Identificacion={Identificacion}", 
-                        JibanConstants.SUCCESS_EMOJI, eventAuthorizeDocument.IdSolicitud, eventAuthorizeDocument.IdSolicitudDetalle, eventAuthorizeDocument.Identificacion);
+                    documentEmailRequest = _eventService.GetMessage<DocumentEmailRequest>(mensaje);
+                    _logger.LogInformation("{SuccessEmoji} Mensaje deserializado correctamente: SriDocumentId={SriDocumentId}, Email={Email}, DocumentSriType={DocumentSriType}", 
+                        JibanConstants.SUCCESS_EMOJI, documentEmailRequest.SriDocumentId, documentEmailRequest.Email, documentEmailRequest.DocumentSriType);
                 }
                 catch (Exception ex)
                 {
@@ -335,7 +335,7 @@ namespace Jiban.Infrastructure.HostedServices
                 }
 
                 // Procesar el evento
-                await ProcesarEvento(eventAuthorizeDocument);
+                await ProcesarEvento(documentEmailRequest);
                 
                 // 🎯 CRÍTICO: Solo si llegamos aquí sin excepciones, confirmamos el mensaje
                 // DeleteMessageById() internamente hace XACK para eliminar de PEL
@@ -387,7 +387,7 @@ namespace Jiban.Infrastructure.HostedServices
                 // - LastDeliveryTime: cuándo fue la última entrega
                 // - ConsumerName: qué consumidor lo tiene
                 StreamPendingMessageInfo informacionMensajePendiente = await _eventService.GetPendingMessageById(queueName, executionGroup, mensajeId);
-                EventAuthorizeDocumentModel eventAuthorizeDocument = _eventService.GetMessage<EventAuthorizeDocumentModel>(mensaje);
+                DocumentEmailRequest eventAuthorizeDocument = _eventService.GetMessage<DocumentEmailRequest>(mensaje);
 
                 // Verificar intentos de reintento
                 int maxRetryAttempts = Convert.ToInt32(_configuration[JibanConstants.NOTIFICATION_RETRY_ATTEMPTS] ?? "3");
@@ -431,12 +431,12 @@ namespace Jiban.Infrastructure.HostedServices
         /// Procesar el evento que se recibe de la cola Redis
         /// </summary>
         /// <param name="eventAuthorizeDocument">Modelo con información de la solicitud a procesar</param>
-        private async Task ProcesarEvento(EventAuthorizeDocumentModel eventAuthorizeDocument)
+        private async Task ProcesarEvento(DocumentEmailRequest eventAuthorizeDocument)
         {
             try
             {
-                string identificacionSolicitud = eventAuthorizeDocument.IdSolicitudDetalle.ToString();
-                string identificacion = eventAuthorizeDocument.Identificacion;
+                string identificacionSolicitud = eventAuthorizeDocument.Email.ToString();
+                string identificacion = eventAuthorizeDocument.SriDocumentId.ToString();
 
                 _logger.LogInformation("{ProcessingEmoji} Procesando evento - IdSolicitudDetalle: {IdSolicitudDetalle}, Identificacion: {Identificacion}", 
                     JibanConstants.PROCESSING_EMOJI, identificacionSolicitud, identificacion);
@@ -469,7 +469,7 @@ namespace Jiban.Infrastructure.HostedServices
         /// Procesar mensaje que ha excedido los intentos de reintento (dead letter queue)
         /// </summary>
         /// <param name="eventAuthorizeDocument">Mensaje a mover a cola de mensajes muertos</param>
-        private async Task ProcesarMensajeRezagado(EventAuthorizeDocumentModel eventAuthorizeDocument)
+        private async Task ProcesarMensajeRezagado(DocumentEmailRequest eventAuthorizeDocument)
         {
             try
             {
