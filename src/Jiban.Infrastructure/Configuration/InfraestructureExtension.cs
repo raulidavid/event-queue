@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Jiban.BaseCode.PermissionsCode;
 using Jiban.Infrastructure.HostedServices;
-using Microsoft.Extensions.Configuration;
-using Jiban.BaseCode.PermissionsCode;
 using Jiban.Infrastructure.Services;
+using Jiban.Nswag;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Jiban.Infrastructure.Configuration
 {
@@ -44,6 +45,11 @@ namespace Jiban.Infrastructure.Configuration
             // Register the electronic document service with scoped lifetime
             // Scoped services are created once per request in web applications
             services.AddScoped<IElectronicDocService, ElectronicDocService>();
+            services.AddHttpClient<IAccountClient, AccountClient>(client =>
+            {
+                client.BaseAddress = new Uri("https://apiqa.jiban.ec:44361/");
+            });
+
             
             return services;
         }

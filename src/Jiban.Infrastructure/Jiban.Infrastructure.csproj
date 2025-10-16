@@ -27,7 +27,7 @@
 	</PropertyGroup>
 
 	<Target Name="NSwag" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug' and Exists('config.nswag')">
-		<Exec Command="dotnet exec &quot;$(NSwagDllPath)&quot; run config.nswag" />
+		<Exec Command="dotnet exec &quot;$(NSwagDllPath)&quot; run config.nswag" ContinueOnError="true" />
 	</Target>
 
 </Project>
