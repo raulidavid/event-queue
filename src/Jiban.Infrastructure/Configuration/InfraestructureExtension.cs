@@ -64,7 +64,7 @@ namespace Jiban.Infrastructure.Configuration
         {
             return HttpPolicyExtensions
                 .HandleTransientHttpError()
-                .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
+                .CircuitBreakerAsync(5, TimeSpan.FromSeconds(180));
         }
 
         private static IAsyncPolicy<HttpResponseMessage> GetTimeoutPolicy()
