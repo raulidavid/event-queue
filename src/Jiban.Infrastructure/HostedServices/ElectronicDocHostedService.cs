@@ -1,62 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Jiban.BaseCode.PermissionsCode;
-using Jiban.Infrastructure.Services;
-using Microsoft.Extensions.Hosting;
+﻿using Jiban.BaseCode.PermissionsCode;
 using Microsoft.Extensions.Logging;
-using JibanPermissions.Services;
 using Jiban.Domain.Models;
 using StackExchange.Redis;
 
 namespace Jiban.Infrastructure.HostedServices
 {
-    /// <summary>
-    /// Servicio en segundo plano para procesar documentos electrónicos desde colas Redis
-    /// 
-    /// EXPLICACIÓN DE MENSAJES NUEVOS VS PENDIENTES EN REDIS STREAMS:
-    /// ================================================================
-    /// 
-    /// 📥 MENSAJES NUEVOS:
-    /// - Son mensajes que NUNCA han sido leídos por NINGÚN consumidor del grupo
-    /// - Redis mantiene un "last delivered ID" por grupo de consumidores
-    /// - ReadNewMessagesAsync() usa XREADGROUP con ID ">" que significa "dame todo lo que sea mayor al último ID entregado"
-    /// - Cuando un mensaje se lee por primera vez, automáticamente pasa a "pendiente"
-    /// 
-    /// 📤 MENSAJES PENDIENTES:
-    /// - Son mensajes que YA fueron leídos por algún consumidor del grupo
-    /// - Pero NO han sido confirmados con XACK (acknowledged)
-    /// - Redis mantiene una "Pending Entries List (PEL)" por consumidor
-    /// - ReadPendingMessagesAsync() usa XPENDING + XCLAIM para recuperar mensajes abandonados
-    /// 
-    /// 🔄 FLUJO COMPLETO:
-    /// 1. Mensaje llega al stream → Redis lo asigna un ID único (timestamp-sequence)
-    /// 2. ReadNewMessagesAsync() lee el mensaje → pasa a "pendiente" automáticamente
-    /// 3. Si procesamiento OK → DeleteMessageById() hace XACK → mensaje se elimina de PEL
-    /// 4. Si procesamiento FALLA → mensaje permanece "pendiente"
-    /// 5. ReadPendingMessagesAsync() recupera mensajes pendientes para reintento
-    /// 
-    /// 📊 EN TU IMAGEN REDIS:
-    /// - "Notification:FinishLetterQueue" tiene 2 entradas
-    /// - ID: "1760134131299-0" es un timestamp (ms desde epoch) + secuencia
-    /// - Si hay Consumer Groups, algunos mensajes pueden estar "pendientes"
-    /// </summary>
-    public partial class ElectronicDocHostedService : BackgroundService
+    public partial class ElectronicDocHostedService
     {
-        private readonly IServiceScope _serviceScope;
-        private readonly ILogger<ElectronicDocHostedService> _logger;
-        private readonly IElectronicDocService _electronicDocService;
-        private readonly IConfiguration _configuration;
-        private readonly IEventService _eventService;
-        
-        public ElectronicDocHostedService(ILogger<ElectronicDocHostedService> logger, IServiceScopeFactory serviceScopeFactory)
-        {
-            _serviceScope = serviceScopeFactory.CreateScope();
-            _logger = logger;
-            _eventService = _serviceScope.ServiceProvider.GetRequiredService<IEventService>();
-            _electronicDocService = _serviceScope.ServiceProvider.GetRequiredService<IElectronicDocService>();
-            _configuration = _serviceScope.ServiceProvider.GetRequiredService<IConfiguration>();
-        }
-
         /// <summary>
         /// Ejecutar proceso principal del servicio
         /// </summary>
@@ -368,12 +318,12 @@ namespace Jiban.Infrastructure.HostedServices
                 }
 
                 // Deserializar el mensaje
-                EventoCuentaPymeModelo eventoCuentaPymeModelo;
+                EventAuthorizeDocumentModel eventAuthorizeDocument;
                 try
                 {
-                    eventoCuentaPymeModelo = _eventService.GetMessage<EventoCuentaPymeModelo>(mensaje);
+                    eventAuthorizeDocument = _eventService.GetMessage<EventAuthorizeDocumentModel>(mensaje);
                     _logger.LogInformation("{SuccessEmoji} Mensaje deserializado correctamente: IdSolicitud={IdSolicitud}, IdSolicitudDetalle={IdSolicitudDetalle}, Identificacion={Identificacion}", 
-                        JibanConstants.SUCCESS_EMOJI, eventoCuentaPymeModelo.IdSolicitud, eventoCuentaPymeModelo.IdSolicitudDetalle, eventoCuentaPymeModelo.Identificacion);
+                        JibanConstants.SUCCESS_EMOJI, eventAuthorizeDocument.IdSolicitud, eventAuthorizeDocument.IdSolicitudDetalle, eventAuthorizeDocument.Identificacion);
                 }
                 catch (Exception ex)
                 {
@@ -385,7 +335,7 @@ namespace Jiban.Infrastructure.HostedServices
                 }
 
                 // Procesar el evento
-                await ProcesarEvento(eventoCuentaPymeModelo);
+                await ProcesarEvento(eventAuthorizeDocument);
                 
                 // 🎯 CRÍTICO: Solo si llegamos aquí sin excepciones, confirmamos el mensaje
                 // DeleteMessageById() internamente hace XACK para eliminar de PEL
@@ -437,7 +387,7 @@ namespace Jiban.Infrastructure.HostedServices
                 // - LastDeliveryTime: cuándo fue la última entrega
                 // - ConsumerName: qué consumidor lo tiene
                 StreamPendingMessageInfo informacionMensajePendiente = await _eventService.GetPendingMessageById(queueName, executionGroup, mensajeId);
-                EventoCuentaPymeModelo eventoCuentaPymeModelo = _eventService.GetMessage<EventoCuentaPymeModelo>(mensaje);
+                EventAuthorizeDocumentModel eventAuthorizeDocument = _eventService.GetMessage<EventAuthorizeDocumentModel>(mensaje);
 
                 // Verificar intentos de reintento
                 int maxRetryAttempts = Convert.ToInt32(_configuration[JibanConstants.NOTIFICATION_RETRY_ATTEMPTS] ?? "3");
@@ -450,13 +400,13 @@ namespace Jiban.Infrastructure.HostedServices
                     _logger.LogWarning("{WarningEmoji} Mensaje {MessageId} excedió intentos de reintento ({DeliveryCount} > {MaxRetryAttempts}), moviendo a cola de mensajes muertos", 
                         JibanConstants.WARNING_EMOJI, mensajeId, informacionMensajePendiente.DeliveryCount, maxRetryAttempts);
                     
-                    await ProcesarMensajeRezagado(eventoCuentaPymeModelo);
+                    await ProcesarMensajeRezagado(eventAuthorizeDocument);
                     await _eventService.DeleteMessageById(queueName, executionGroup, mensajeId);
                 }
                 else
                 {
                     // Intentar procesar el mensaje
-                    await ProcesarEvento(eventoCuentaPymeModelo);
+                    await ProcesarEvento(eventAuthorizeDocument);
                     await _eventService.DeleteMessageById(queueName, executionGroup, mensajeId);
                     _logger.LogInformation("{SuccessEmoji} Mensaje pendiente {MessageId} procesado y eliminado exitosamente", 
                         JibanConstants.SUCCESS_EMOJI, mensajeId);
@@ -480,13 +430,13 @@ namespace Jiban.Infrastructure.HostedServices
         /// <summary>
         /// Procesar el evento que se recibe de la cola Redis
         /// </summary>
-        /// <param name="eventoCuentaPymeModelo">Modelo con información de la solicitud a procesar</param>
-        private async Task ProcesarEvento(EventoCuentaPymeModelo eventoCuentaPymeModelo)
+        /// <param name="eventAuthorizeDocument">Modelo con información de la solicitud a procesar</param>
+        private async Task ProcesarEvento(EventAuthorizeDocumentModel eventAuthorizeDocument)
         {
             try
             {
-                string identificacionSolicitud = eventoCuentaPymeModelo.IdSolicitudDetalle.ToString();
-                string identificacion = eventoCuentaPymeModelo.Identificacion;
+                string identificacionSolicitud = eventAuthorizeDocument.IdSolicitudDetalle.ToString();
+                string identificacion = eventAuthorizeDocument.Identificacion;
 
                 _logger.LogInformation("{ProcessingEmoji} Procesando evento - IdSolicitudDetalle: {IdSolicitudDetalle}, Identificacion: {Identificacion}", 
                     JibanConstants.PROCESSING_EMOJI, identificacionSolicitud, identificacion);
@@ -498,9 +448,9 @@ namespace Jiban.Infrastructure.HostedServices
                 await _electronicDocService.ProcessElectronicDocumentsAsync(identificacion, CancellationToken.None);
                 
                 // Aquí puedes agregar tu lógica de negocio específica:
-                // await ProcesarSolicitudCheques(eventoCuentaPymeModelo);
-                // await ProcesarGeneracionDocumentacion(eventoCuentaPymeModelo);
-                // await ProcesarActualizacionUsuarioFinal(eventoCuentaPymeModelo);
+                // await ProcesarSolicitudCheques(eventAuthorizeDocument);
+                // await ProcesarGeneracionDocumentacion(eventAuthorizeDocument);
+                // await ProcesarActualizacionUsuarioFinal(eventAuthorizeDocument);
 
                 _logger.LogInformation("{SuccessEmoji} Evento procesado exitosamente para IdSolicitudDetalle: {IdSolicitudDetalle}", 
                     JibanConstants.SUCCESS_EMOJI, identificacionSolicitud);
@@ -518,8 +468,8 @@ namespace Jiban.Infrastructure.HostedServices
         /// <summary>
         /// Procesar mensaje que ha excedido los intentos de reintento (dead letter queue)
         /// </summary>
-        /// <param name="eventoCuentaPymeModelo">Mensaje a mover a cola de mensajes muertos</param>
-        private async Task ProcesarMensajeRezagado(EventoCuentaPymeModelo eventoCuentaPymeModelo)
+        /// <param name="eventAuthorizeDocument">Mensaje a mover a cola de mensajes muertos</param>
+        private async Task ProcesarMensajeRezagado(EventAuthorizeDocumentModel eventAuthorizeDocument)
         {
             try
             {
@@ -538,7 +488,7 @@ namespace Jiban.Infrastructure.HostedServices
                 await _eventService.CreateConsumerGroupAsync(deadLetterQueue, JibanConstants.REDIS_EXECUTION_GROUP);
                 
                 // TODO: Implementar PublishAsync o el método apropiado para mover a dead letter queue
-                // await _eventService.PublishAsync(deadLetterQueue, eventoCuentaPymeModelo);
+                // await _eventService.PublishAsync(deadLetterQueue, eventAuthorizeDocument);
                 
                 _logger.LogInformation("{SuccessEmoji} Mensaje movido a cola de mensajes muertos: {DeadLetterQueue}", 
                     JibanConstants.SUCCESS_EMOJI, deadLetterQueue);

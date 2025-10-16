@@ -442,7 +442,7 @@ namespace Jiban.Api.Controllers
                 try
                 {
                     // Intentar deserializar
-                    var eventModel = _eventService.GetMessage<Domain.Models.EventoCuentaPymeModelo>(message);
+                    var eventModel = _eventService.GetMessage<Domain.Models.EventAuthorizeDocumentModel>(message);
                     
                     return Ok(new
                     {
