@@ -24,12 +24,20 @@
     <ProjectReference Include="..\Jiban.Domain\Jiban.Domain.csproj" />
   </ItemGroup>
 
-	<PropertyGroup>
-		<NSwagDllPath>$(NuGetPackageRoot)nswag.msbuild\14.6.1\tools\Net100\dotnet-nswag.dll</NSwagDllPath>
-	</PropertyGroup>
+  <PropertyGroup>
+    <NSwagDllPath>$(NuGetPackageRoot)nswag.msbuild\14.6.1\tools\Net100\dotnet-nswag.dll</NSwagDllPath>
+  </PropertyGroup>
 
-	<Target Name="NSwag" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug' and Exists('config.nswag')">
-		<Exec Command="dotnet exec &quot;$(NSwagDllPath)&quot; run config.nswag" ContinueOnError="true" />
+  <!-- Run NSwag on real builds (kept) -->
+  <Target Name="NSwag" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug' and Exists('config.nswag')">
+    <Exec Command="dotnet exec &quot;$(NSwagDllPath)&quot; run config.nswag" ContinueOnError="true" />
+  </Target>
+
+	<!-- Design-time: run NSwag only if the generated file is missing; run only for real builds (not design-time) -->
+	<Target Name="NSwag_DesignTime" BeforeTargets="CoreCompile"
+          Condition="'$(Configuration)' == 'Debug' and Exists('config.nswag') and '$(DesignTimeBuild)' != 'true' and !Exists('Services\Platform.cs')">
+		<Message Importance="high" Text="NSwag: Generating client (design-time) because Services\Platform.cs is missing..." />
+		<Exec Command="dotnet exec &quot;$(NSwagDllPath)&quot; run config.nswag" ContinueOnError="false" />
 	</Target>
-	
+
 </Project>
