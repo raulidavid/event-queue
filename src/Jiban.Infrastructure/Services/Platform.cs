@@ -28,11 +28,11 @@ namespace Jiban.Nswag
     public partial interface IAccountClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AccountTransferCreateResponse> AccountTransferCreateAsync(AccountTransferCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<AccountTransferCreateResponse>> AccountTransferCreateAsync(AccountTransferCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AccountTransferCreateResponse> AccountTransferCreateAsync(AccountTransferCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AccountTransferCreateResponse>> AccountTransferCreateAsync(AccountTransferCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -85,14 +85,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AccountTransferCreateResponse> AccountTransferCreateAsync(AccountTransferCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AccountTransferCreateResponse>> AccountTransferCreateAsync(AccountTransferCreateRequest request)
         {
             return AccountTransferCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AccountTransferCreateResponse> AccountTransferCreateAsync(AccountTransferCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AccountTransferCreateResponse>> AccountTransferCreateAsync(AccountTransferCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -145,7 +145,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AccountTransferCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -303,27 +303,27 @@ namespace Jiban.Nswag
         /// Get address by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AddressByIdResponse> AddressByIdAsync(System.Guid? addressId);
+        System.Threading.Tasks.Task<SwaggerResponse<AddressByIdResponse>> AddressByIdAsync(System.Guid? addressId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get address by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AddressByIdResponse> AddressByIdAsync(System.Guid? addressId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AddressByIdResponse>> AddressByIdAsync(System.Guid? addressId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get address by PersonId from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AddressByPersonIdResponse> AddressByPersonIdAsync(System.Guid? personId);
+        System.Threading.Tasks.Task<SwaggerResponse<AddressByPersonIdResponse>> AddressByPersonIdAsync(System.Guid? personId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get address by PersonId from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AddressByPersonIdResponse> AddressByPersonIdAsync(System.Guid? personId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AddressByPersonIdResponse>> AddressByPersonIdAsync(System.Guid? personId, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -379,7 +379,7 @@ namespace Jiban.Nswag
         /// Get address by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AddressByIdResponse> AddressByIdAsync(System.Guid? addressId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AddressByIdResponse>> AddressByIdAsync(System.Guid? addressId)
         {
             return AddressByIdAsync(addressId, System.Threading.CancellationToken.None);
         }
@@ -389,7 +389,7 @@ namespace Jiban.Nswag
         /// Get address by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AddressByIdResponse> AddressByIdAsync(System.Guid? addressId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AddressByIdResponse>> AddressByIdAsync(System.Guid? addressId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -441,7 +441,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AddressByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -467,7 +467,7 @@ namespace Jiban.Nswag
         /// Get address by PersonId from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AddressByPersonIdResponse> AddressByPersonIdAsync(System.Guid? personId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AddressByPersonIdResponse>> AddressByPersonIdAsync(System.Guid? personId)
         {
             return AddressByPersonIdAsync(personId, System.Threading.CancellationToken.None);
         }
@@ -477,7 +477,7 @@ namespace Jiban.Nswag
         /// Get address by PersonId from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AddressByPersonIdResponse> AddressByPersonIdAsync(System.Guid? personId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AddressByPersonIdResponse>> AddressByPersonIdAsync(System.Guid? personId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -529,7 +529,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AddressByPersonIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -684,32 +684,32 @@ namespace Jiban.Nswag
     public partial interface IAppointmentClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfAppointmentSearchResponse> AppointmentsAsync(AppointmentSearchRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfAppointmentSearchResponse>> AppointmentsAsync(AppointmentSearchRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfAppointmentSearchResponse> AppointmentsAsync(AppointmentSearchRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfAppointmentSearchResponse>> AppointmentsAsync(AppointmentSearchRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AppointmentCreateResponse> CreateAppointmentAsync(AppointmentCreateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AppointmentCreateResponse> CreateAppointmentAsync(AppointmentCreateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AppointmentUpdateResponse> UpdateAppointmentAsync(AppointmentUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<AppointmentCreateResponse>> CreateAppointmentAsync(AppointmentCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AppointmentUpdateResponse> UpdateAppointmentAsync(AppointmentUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AppointmentCreateResponse>> CreateAppointmentAsync(AppointmentCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AppointmentDeleteResponse> DeleteAppointmentAsync(AppointmentDeleteRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<AppointmentUpdateResponse>> UpdateAppointmentAsync(AppointmentUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AppointmentDeleteResponse> DeleteAppointmentAsync(AppointmentDeleteRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AppointmentUpdateResponse>> UpdateAppointmentAsync(AppointmentUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<AppointmentDeleteResponse>> DeleteAppointmentAsync(AppointmentDeleteRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<AppointmentDeleteResponse>> DeleteAppointmentAsync(AppointmentDeleteRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> ReportAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, System.Collections.Generic.IEnumerable<System.Guid> listUserGenerated);
@@ -769,14 +769,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfAppointmentSearchResponse> AppointmentsAsync(AppointmentSearchRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfAppointmentSearchResponse>> AppointmentsAsync(AppointmentSearchRequest request)
         {
             return AppointmentsAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfAppointmentSearchResponse> AppointmentsAsync(AppointmentSearchRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfAppointmentSearchResponse>> AppointmentsAsync(AppointmentSearchRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -829,7 +829,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfAppointmentSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -852,14 +852,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AppointmentCreateResponse> CreateAppointmentAsync(AppointmentCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AppointmentCreateResponse>> CreateAppointmentAsync(AppointmentCreateRequest request)
         {
             return CreateAppointmentAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AppointmentCreateResponse> CreateAppointmentAsync(AppointmentCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AppointmentCreateResponse>> CreateAppointmentAsync(AppointmentCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -912,7 +912,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AppointmentCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -935,14 +935,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AppointmentUpdateResponse> UpdateAppointmentAsync(AppointmentUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AppointmentUpdateResponse>> UpdateAppointmentAsync(AppointmentUpdateRequest request)
         {
             return UpdateAppointmentAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AppointmentUpdateResponse> UpdateAppointmentAsync(AppointmentUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AppointmentUpdateResponse>> UpdateAppointmentAsync(AppointmentUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -995,7 +995,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AppointmentUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1018,14 +1018,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AppointmentDeleteResponse> DeleteAppointmentAsync(AppointmentDeleteRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AppointmentDeleteResponse>> DeleteAppointmentAsync(AppointmentDeleteRequest request)
         {
             return DeleteAppointmentAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AppointmentDeleteResponse> DeleteAppointmentAsync(AppointmentDeleteRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AppointmentDeleteResponse>> DeleteAppointmentAsync(AppointmentDeleteRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -1078,7 +1078,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AppointmentDeleteResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1321,53 +1321,53 @@ namespace Jiban.Nswag
     public partial interface IArticleClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfArticleSearchResponse> ArticlesAsync(ArticleSearchRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfArticleSearchResponse>> ArticlesAsync(ArticleSearchRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfArticleSearchResponse> ArticlesAsync(ArticleSearchRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfArticleSearchResponse>> ArticlesAsync(ArticleSearchRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleAvailableResponse> AvailableAsync(ArticleAvailableRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleAvailableResponse> AvailableAsync(ArticleAvailableRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleCreateResponse> CreateArticleAsync(ArticleCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleAvailableResponse>> AvailableAsync(ArticleAvailableRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleCreateResponse> CreateArticleAsync(ArticleCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleAvailableResponse>> AvailableAsync(ArticleAvailableRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleSearchResponse> GetArticleAsync(System.Guid? articleId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleSearchResponse> GetArticleAsync(System.Guid? articleId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleUpdateResponse> UpdateArticleAsync(ArticleUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleCreateResponse>> CreateArticleAsync(ArticleCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleUpdateResponse> UpdateArticleAsync(ArticleUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleCreateResponse>> CreateArticleAsync(ArticleCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleUploadResponse> UploadArticleAsync(FileParameter excelFile);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleUploadResponse> UploadArticleAsync(FileParameter excelFile, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleTaxResponse> ArticlesTaxAsync(ArticleTaxRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleSearchResponse>> GetArticleAsync(System.Guid? articleId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ArticleTaxResponse> ArticlesTaxAsync(ArticleTaxRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleSearchResponse>> GetArticleAsync(System.Guid? articleId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleUpdateResponse>> UpdateArticleAsync(ArticleUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleUpdateResponse>> UpdateArticleAsync(ArticleUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleUploadResponse>> UploadArticleAsync(FileParameter excelFile);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleUploadResponse>> UploadArticleAsync(FileParameter excelFile, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleTaxResponse>> ArticlesTaxAsync(ArticleTaxRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ArticleTaxResponse>> ArticlesTaxAsync(ArticleTaxRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> ReportAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate);
@@ -1427,14 +1427,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfArticleSearchResponse> ArticlesAsync(ArticleSearchRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfArticleSearchResponse>> ArticlesAsync(ArticleSearchRequest request)
         {
             return ArticlesAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfArticleSearchResponse> ArticlesAsync(ArticleSearchRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfArticleSearchResponse>> ArticlesAsync(ArticleSearchRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -1487,7 +1487,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfArticleSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1510,14 +1510,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ArticleAvailableResponse> AvailableAsync(ArticleAvailableRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ArticleAvailableResponse>> AvailableAsync(ArticleAvailableRequest request)
         {
             return AvailableAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ArticleAvailableResponse> AvailableAsync(ArticleAvailableRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ArticleAvailableResponse>> AvailableAsync(ArticleAvailableRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -1570,7 +1570,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ArticleAvailableResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1593,14 +1593,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ArticleCreateResponse> CreateArticleAsync(ArticleCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ArticleCreateResponse>> CreateArticleAsync(ArticleCreateRequest request)
         {
             return CreateArticleAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ArticleCreateResponse> CreateArticleAsync(ArticleCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ArticleCreateResponse>> CreateArticleAsync(ArticleCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -1653,7 +1653,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ArticleCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1676,14 +1676,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ArticleSearchResponse> GetArticleAsync(System.Guid? articleId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ArticleSearchResponse>> GetArticleAsync(System.Guid? articleId)
         {
             return GetArticleAsync(articleId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ArticleSearchResponse> GetArticleAsync(System.Guid? articleId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ArticleSearchResponse>> GetArticleAsync(System.Guid? articleId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -1735,7 +1735,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ArticleSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1758,14 +1758,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ArticleUpdateResponse> UpdateArticleAsync(ArticleUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ArticleUpdateResponse>> UpdateArticleAsync(ArticleUpdateRequest request)
         {
             return UpdateArticleAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ArticleUpdateResponse> UpdateArticleAsync(ArticleUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ArticleUpdateResponse>> UpdateArticleAsync(ArticleUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -1818,7 +1818,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ArticleUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1841,14 +1841,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ArticleUploadResponse> UploadArticleAsync(FileParameter excelFile)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ArticleUploadResponse>> UploadArticleAsync(FileParameter excelFile)
         {
             return UploadArticleAsync(excelFile, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ArticleUploadResponse> UploadArticleAsync(FileParameter excelFile, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ArticleUploadResponse>> UploadArticleAsync(FileParameter excelFile, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -1907,7 +1907,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ArticleUploadResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -1930,14 +1930,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ArticleTaxResponse> ArticlesTaxAsync(ArticleTaxRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ArticleTaxResponse>> ArticlesTaxAsync(ArticleTaxRequest request)
         {
             return ArticlesTaxAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ArticleTaxResponse> ArticlesTaxAsync(ArticleTaxRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ArticleTaxResponse>> ArticlesTaxAsync(ArticleTaxRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -1990,7 +1990,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ArticleTaxResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -2232,27 +2232,27 @@ namespace Jiban.Nswag
         /// This checks you are a valid user and returns a JTW token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<AuthenticateResponse>> AuthenticateAsync(AuthenticateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// This checks you are a valid user and returns a JTW token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AuthenticateResponse>> AuthenticateAsync(AuthenticateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// This will refresh the JWT token using the provided Refresh token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TokenAndRefreshToken> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh);
+        System.Threading.Tasks.Task<SwaggerResponse<TokenAndRefreshToken>> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// This will refresh the JWT token using the provided Refresh token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TokenAndRefreshToken> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<TokenAndRefreshToken>> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// This will mark the JST refresh as used, so the user cannot refresh the JWT Token.
@@ -2268,32 +2268,32 @@ namespace Jiban.Nswag
         System.Threading.Tasks.Task<FileResponse> LogoutAsync(LogoutRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ForgotPasswordResponse> ForgotPasswordAsync(ForgotPasswordRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<ForgotPasswordResponse>> ForgotPasswordAsync(ForgotPasswordRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ForgotPasswordResponse> ForgotPasswordAsync(ForgotPasswordRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ForgotPasswordResponse>> ForgotPasswordAsync(ForgotPasswordRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GenerateInitialConfirmationResponse> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<ResetPasswordResponse>> ResetPasswordAsync(ResetPasswordRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GenerateInitialConfirmationResponse> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ResetPasswordResponse>> ResetPasswordAsync(ResetPasswordRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GenerateConfirmationResponse> GenerateConfirmationAsync(GenerateConfirmationRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<GenerateInitialConfirmationResponse>> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GenerateConfirmationResponse> GenerateConfirmationAsync(GenerateConfirmationRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<GenerateInitialConfirmationResponse>> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GenerateConfirmationResponse>> GenerateConfirmationAsync(GenerateConfirmationRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GenerateConfirmationResponse>> GenerateConfirmationAsync(GenerateConfirmationRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// This migration oldEmail to newEmail
@@ -2309,11 +2309,11 @@ namespace Jiban.Nswag
         System.Threading.Tasks.Task<FileResponse> UpdateEmailAsync(UpdateEmailRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<bool> LoggedInAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<bool>> LoggedInAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<bool> LoggedInAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<bool>> LoggedInAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// This returns the permission names for the current user (Force List not null available)
@@ -2322,7 +2322,7 @@ namespace Jiban.Nswag
         /// <br/>You should call this after a login and when the JWT Token is refreshed
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> GetUsersPermissionsAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> GetUsersPermissionsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -2332,7 +2332,7 @@ namespace Jiban.Nswag
         /// <br/>You should call this after a login and when the JWT Token is refreshed
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> GetUsersPermissionsAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> GetUsersPermissionsAsync(System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -2388,7 +2388,7 @@ namespace Jiban.Nswag
         /// This checks you are a valid user and returns a JTW token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AuthenticateResponse>> AuthenticateAsync(AuthenticateRequest request)
         {
             return AuthenticateAsync(request, System.Threading.CancellationToken.None);
         }
@@ -2398,7 +2398,7 @@ namespace Jiban.Nswag
         /// This checks you are a valid user and returns a JTW token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AuthenticateResponse>> AuthenticateAsync(AuthenticateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -2451,7 +2451,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AuthenticateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -2477,7 +2477,7 @@ namespace Jiban.Nswag
         /// This will refresh the JWT token using the provided Refresh token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<TokenAndRefreshToken> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<TokenAndRefreshToken>> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh)
         {
             return RefreshAuthenticationAsync(tokenAndRefresh, System.Threading.CancellationToken.None);
         }
@@ -2487,7 +2487,7 @@ namespace Jiban.Nswag
         /// This will refresh the JWT token using the provided Refresh token
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TokenAndRefreshToken> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<TokenAndRefreshToken>> RefreshAuthenticationAsync(TokenAndRefreshToken tokenAndRefresh, System.Threading.CancellationToken cancellationToken)
         {
             if (tokenAndRefresh == null)
                 throw new System.ArgumentNullException("tokenAndRefresh");
@@ -2540,7 +2540,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<TokenAndRefreshToken>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -2650,14 +2650,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ForgotPasswordResponse> ForgotPasswordAsync(ForgotPasswordRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ForgotPasswordResponse>> ForgotPasswordAsync(ForgotPasswordRequest request)
         {
             return ForgotPasswordAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ForgotPasswordResponse> ForgotPasswordAsync(ForgotPasswordRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ForgotPasswordResponse>> ForgotPasswordAsync(ForgotPasswordRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -2710,7 +2710,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ForgotPasswordResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -2733,14 +2733,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ResetPasswordResponse>> ResetPasswordAsync(ResetPasswordRequest request)
         {
             return ResetPasswordAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ResetPasswordResponse>> ResetPasswordAsync(ResetPasswordRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -2793,7 +2793,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ResetPasswordResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -2816,14 +2816,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GenerateInitialConfirmationResponse> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<GenerateInitialConfirmationResponse>> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request)
         {
             return GenerateInitialConfirmationAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GenerateInitialConfirmationResponse> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<GenerateInitialConfirmationResponse>> GenerateInitialConfirmationAsync(GenerateInitialConfirmationRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -2876,7 +2876,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<GenerateInitialConfirmationResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -2899,14 +2899,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GenerateConfirmationResponse> GenerateConfirmationAsync(GenerateConfirmationRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<GenerateConfirmationResponse>> GenerateConfirmationAsync(GenerateConfirmationRequest request)
         {
             return GenerateConfirmationAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GenerateConfirmationResponse> GenerateConfirmationAsync(GenerateConfirmationRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<GenerateConfirmationResponse>> GenerateConfirmationAsync(GenerateConfirmationRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -2959,7 +2959,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<GenerateConfirmationResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -3069,14 +3069,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<bool> LoggedInAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<bool>> LoggedInAsync()
         {
             return LoggedInAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<bool> LoggedInAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<bool>> LoggedInAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3122,7 +3122,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<bool>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -3151,7 +3151,7 @@ namespace Jiban.Nswag
         /// <br/>You should call this after a login and when the JWT Token is refreshed
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> GetUsersPermissionsAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> GetUsersPermissionsAsync()
         {
             return GetUsersPermissionsAsync(System.Threading.CancellationToken.None);
         }
@@ -3164,7 +3164,7 @@ namespace Jiban.Nswag
         /// <br/>You should call this after a login and when the JWT Token is refreshed
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> GetUsersPermissionsAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> GetUsersPermissionsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3210,7 +3210,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<string>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -3379,81 +3379,81 @@ namespace Jiban.Nswag
         System.Threading.Tasks.Task<FileResponse> EditRolesAsync(SetupManualUserChange change, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InviteUserSetup> RoleNamesForUserAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<InviteUserSetup>> RoleNamesForUserAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InviteUserSetup> RoleNamesForUserAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<InviteUserSetup>> RoleNamesForUserAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> InviteUserAsync(InviteUserSetup data);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> InviteUserAsync(InviteUserSetup data, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<VerifyInvitationResponse> VerifyInvitationAsync(string inviteParam);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> InviteUserAsync(InviteUserSetup data);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<VerifyInvitationResponse> VerifyInvitationAsync(string inviteParam, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> InviteUserAsync(InviteUserSetup data, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<VerifyInvitationResponse> ConfirmInvitationAsync(string inviteParam, string email);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<VerifyInvitationResponse> ConfirmInvitationAsync(string inviteParam, string email, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AuthUserDisplay>> AuthUsersAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> VerifyInvitationAsync(string inviteParam);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AuthUserDisplay>> AuthUsersAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> VerifyInvitationAsync(string inviteParam, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SetupManualUserChange> EditGETAsync(System.Guid? userId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SetupManualUserChange> EditGETAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<string> EditPOSTAsync(SetupManualUserChange change);
+        System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> ConfirmInvitationAsync(string inviteParam, string email);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<string> EditPOSTAsync(SetupManualUserChange change, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> ConfirmInvitationAsync(string inviteParam, string email, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SyncAuthUserWithChange>> SyncUsersAllAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SyncAuthUserWithChange>> SyncUsersAllAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<AuthUserDisplay>>> AuthUsersAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<AuthUserDisplay>>> AuthUsersAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(System.Guid? userId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ChangeTenantResponse> ChangeTenantAsync(ChangeTenantRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<SetupManualUserChange>> EditGETAsync(System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ChangeTenantResponse> ChangeTenantAsync(ChangeTenantRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SetupManualUserChange>> EditGETAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<string>> EditPOSTAsync(SetupManualUserChange change);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<string>> EditPOSTAsync(SetupManualUserChange change, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SyncAuthUserWithChange>>> SyncUsersAllAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SyncAuthUserWithChange>>> SyncUsersAllAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(System.Guid? userId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ChangeTenantResponse>> ChangeTenantAsync(ChangeTenantRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ChangeTenantResponse>> ChangeTenantAsync(ChangeTenantRequest request, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -3667,14 +3667,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<InviteUserSetup> RoleNamesForUserAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<InviteUserSetup>> RoleNamesForUserAsync()
         {
             return RoleNamesForUserAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<InviteUserSetup> RoleNamesForUserAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<InviteUserSetup>> RoleNamesForUserAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3720,7 +3720,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<InviteUserSetup>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -3743,14 +3743,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> InviteUserAsync(InviteUserSetup data)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> InviteUserAsync(InviteUserSetup data)
         {
             return InviteUserAsync(data, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> InviteUserAsync(InviteUserSetup data, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> InviteUserAsync(InviteUserSetup data, System.Threading.CancellationToken cancellationToken)
         {
             if (data == null)
                 throw new System.ArgumentNullException("data");
@@ -3803,7 +3803,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -3826,14 +3826,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<VerifyInvitationResponse> VerifyInvitationAsync(string inviteParam)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> VerifyInvitationAsync(string inviteParam)
         {
             return VerifyInvitationAsync(inviteParam, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<VerifyInvitationResponse> VerifyInvitationAsync(string inviteParam, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> VerifyInvitationAsync(string inviteParam, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3885,7 +3885,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<VerifyInvitationResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -3908,14 +3908,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<VerifyInvitationResponse> ConfirmInvitationAsync(string inviteParam, string email)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> ConfirmInvitationAsync(string inviteParam, string email)
         {
             return ConfirmInvitationAsync(inviteParam, email, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<VerifyInvitationResponse> ConfirmInvitationAsync(string inviteParam, string email, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<VerifyInvitationResponse>> ConfirmInvitationAsync(string inviteParam, string email, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3971,7 +3971,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<VerifyInvitationResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -3994,14 +3994,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AuthUserDisplay>> AuthUsersAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<AuthUserDisplay>>> AuthUsersAsync()
         {
             return AuthUsersAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AuthUserDisplay>> AuthUsersAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<AuthUserDisplay>>> AuthUsersAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4047,7 +4047,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<AuthUserDisplay>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4070,14 +4070,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SetupManualUserChange> EditGETAsync(System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SetupManualUserChange>> EditGETAsync(System.Guid? userId)
         {
             return EditGETAsync(userId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SetupManualUserChange> EditGETAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SetupManualUserChange>> EditGETAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4129,7 +4129,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SetupManualUserChange>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4152,14 +4152,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<string> EditPOSTAsync(SetupManualUserChange change)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<string>> EditPOSTAsync(SetupManualUserChange change)
         {
             return EditPOSTAsync(change, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<string> EditPOSTAsync(SetupManualUserChange change, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<string>> EditPOSTAsync(SetupManualUserChange change, System.Threading.CancellationToken cancellationToken)
         {
             if (change == null)
                 throw new System.ArgumentNullException("change");
@@ -4212,7 +4212,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<string>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4235,14 +4235,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SyncAuthUserWithChange>> SyncUsersAllAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SyncAuthUserWithChange>>> SyncUsersAllAsync()
         {
             return SyncUsersAllAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SyncAuthUserWithChange>> SyncUsersAllAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SyncAuthUserWithChange>>> SyncUsersAllAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4288,7 +4288,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<SyncAuthUserWithChange>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4311,14 +4311,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data)
         {
             return SyncUsersAsync(data, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> SyncUsersAsync(System.Collections.Generic.IEnumerable<SyncAuthUserWithChange> data, System.Threading.CancellationToken cancellationToken)
         {
             if (data == null)
                 throw new System.ArgumentNullException("data");
@@ -4371,7 +4371,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4394,14 +4394,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(System.Guid? userId)
         {
             return DeleteAsync(userId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4453,7 +4453,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4476,14 +4476,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ChangeTenantResponse> ChangeTenantAsync(ChangeTenantRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ChangeTenantResponse>> ChangeTenantAsync(ChangeTenantRequest request)
         {
             return ChangeTenantAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ChangeTenantResponse> ChangeTenantAsync(ChangeTenantRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ChangeTenantResponse>> ChangeTenantAsync(ChangeTenantRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -4536,7 +4536,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ChangeTenantResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4695,7 +4695,7 @@ namespace Jiban.Nswag
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerCreateUpdateResponse> CreateAsync(CustomerCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> CreateAsync(CustomerCreateUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4703,14 +4703,14 @@ namespace Jiban.Nswag
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerCreateUpdateResponse> CreateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> CreateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Customer update
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerCreateUpdateResponse> UpdateAsync(CustomerCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> UpdateAsync(CustomerCreateUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -4718,33 +4718,33 @@ namespace Jiban.Nswag
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerCreateUpdateResponse> UpdateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> UpdateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get one customer by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerByIdResponse> CustomerByIdAsync(System.Guid? customerId);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomerByIdResponse>> CustomerByIdAsync(System.Guid? customerId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get one customer by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomerByIdResponse> CustomerByIdAsync(System.Guid? customerId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomerByIdResponse>> CustomerByIdAsync(System.Guid? customerId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Return all customers by Filter
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfCustomerSearchResponse> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfCustomerSearchResponse>> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Return all customers by Filter
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfCustomerSearchResponse> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfCustomerSearchResponse>> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Create report
@@ -4814,7 +4814,7 @@ namespace Jiban.Nswag
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomerCreateUpdateResponse> CreateAsync(CustomerCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> CreateAsync(CustomerCreateUpdateRequest request)
         {
             return CreateAsync(request, System.Threading.CancellationToken.None);
         }
@@ -4825,7 +4825,7 @@ namespace Jiban.Nswag
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomerCreateUpdateResponse> CreateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> CreateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -4878,7 +4878,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomerCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4905,7 +4905,7 @@ namespace Jiban.Nswag
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomerCreateUpdateResponse> UpdateAsync(CustomerCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> UpdateAsync(CustomerCreateUpdateRequest request)
         {
             return UpdateAsync(request, System.Threading.CancellationToken.None);
         }
@@ -4916,7 +4916,7 @@ namespace Jiban.Nswag
         /// </summary>
         /// <param name="request">The customer's data</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomerCreateUpdateResponse> UpdateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomerCreateUpdateResponse>> UpdateAsync(CustomerCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -4969,7 +4969,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomerCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -4995,7 +4995,7 @@ namespace Jiban.Nswag
         /// Get one customer by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomerByIdResponse> CustomerByIdAsync(System.Guid? customerId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomerByIdResponse>> CustomerByIdAsync(System.Guid? customerId)
         {
             return CustomerByIdAsync(customerId, System.Threading.CancellationToken.None);
         }
@@ -5005,7 +5005,7 @@ namespace Jiban.Nswag
         /// Get one customer by Id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomerByIdResponse> CustomerByIdAsync(System.Guid? customerId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomerByIdResponse>> CustomerByIdAsync(System.Guid? customerId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -5057,7 +5057,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomerByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -5083,7 +5083,7 @@ namespace Jiban.Nswag
         /// Return all customers by Filter
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfCustomerSearchResponse> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfCustomerSearchResponse>> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
         {
             return CustomerSearchAsync(accessAll, customerAll, customerFilterType, search, sortDirectionType, currentPage, pageSize, System.Threading.CancellationToken.None);
         }
@@ -5093,7 +5093,7 @@ namespace Jiban.Nswag
         /// Return all customers by Filter
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfCustomerSearchResponse> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfCustomerSearchResponse>> CustomerSearchAsync(bool? accessAll, bool? customerAll, CustomerFilterType? customerFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -5169,7 +5169,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfCustomerSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -5417,92 +5417,92 @@ namespace Jiban.Nswag
         /// Get Widget Order Items Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get Widget Order Items Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get Widget Balance
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetBalanceResponse> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetBalanceResponse>> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get Widget Balance
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetBalanceResponse> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetBalanceResponse>> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get Widget Business Advisor Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetTransactionsResponse> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get Widget Business Advisor Wininng
-        /// </summary>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetTransactionsResponse> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Get Widget Business Advisor Wininng
-        /// </summary>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetTransactionsResponse>> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get Widget Business Advisor Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetTransactionsResponse>> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get Widget Business Advisor Wininng
+        /// </summary>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get Widget Business Advisor Wininng
+        /// </summary>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get Widget Orders Deposits Yearly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetOrdersDepositsYearlyResponse> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersDepositsYearlyResponse>> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get Widget Orders Deposits Yearly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetOrdersDepositsYearlyResponse> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersDepositsYearlyResponse>> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get Widget Orders Monthly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetOrdersMonthlyResponse> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get Widget Orders Monthly
-        /// </summary>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetOrdersMonthlyResponse> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Get Widget Orders Monthly
-        /// </summary>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetClientsMonthlyResponse> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersMonthlyResponse>> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get Widget Orders Monthly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WidgetClientsMonthlyResponse> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersMonthlyResponse>> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get Widget Orders Monthly
+        /// </summary>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetClientsMonthlyResponse>> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get Widget Orders Monthly
+        /// </summary>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<WidgetClientsMonthlyResponse>> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -5558,7 +5558,7 @@ namespace Jiban.Nswag
         /// Get Widget Order Items Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return WidgetOrderItemsWinningAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -5568,7 +5568,7 @@ namespace Jiban.Nswag
         /// Get Widget Order Items Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>>> WidgetOrderItemsWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -5636,7 +5636,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<WidgetOrderItemsWinningResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -5662,7 +5662,7 @@ namespace Jiban.Nswag
         /// Get Widget Balance
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WidgetBalanceResponse> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<WidgetBalanceResponse>> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return WidgetBalanceAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -5672,7 +5672,7 @@ namespace Jiban.Nswag
         /// Get Widget Balance
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WidgetBalanceResponse> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<WidgetBalanceResponse>> WidgetBalanceAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -5740,7 +5740,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<WidgetBalanceResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -5766,7 +5766,7 @@ namespace Jiban.Nswag
         /// Get Widget Business Advisor Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WidgetTransactionsResponse> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<WidgetTransactionsResponse>> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return WidgetTransactionsAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -5776,7 +5776,7 @@ namespace Jiban.Nswag
         /// Get Widget Business Advisor Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WidgetTransactionsResponse> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<WidgetTransactionsResponse>> WidgetTransactionsAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -5844,7 +5844,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<WidgetTransactionsResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -5870,7 +5870,7 @@ namespace Jiban.Nswag
         /// Get Widget Business Advisor Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return WidgetBusinessAdvisorWinningAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -5880,7 +5880,7 @@ namespace Jiban.Nswag
         /// Get Widget Business Advisor Wininng
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>>> WidgetBusinessAdvisorWinningAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -5948,7 +5948,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<WidgetBusinessAdvisorWinningResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -5974,7 +5974,7 @@ namespace Jiban.Nswag
         /// Get Widget Orders Deposits Yearly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WidgetOrdersDepositsYearlyResponse> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersDepositsYearlyResponse>> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return WidgetOrdersDepositsMonthlyAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -5984,7 +5984,7 @@ namespace Jiban.Nswag
         /// Get Widget Orders Deposits Yearly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WidgetOrdersDepositsYearlyResponse> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersDepositsYearlyResponse>> WidgetOrdersDepositsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6052,7 +6052,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<WidgetOrdersDepositsYearlyResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -6078,7 +6078,7 @@ namespace Jiban.Nswag
         /// Get Widget Orders Monthly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WidgetOrdersMonthlyResponse> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersMonthlyResponse>> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return GetWidgetOrdersMonthlyAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -6088,7 +6088,7 @@ namespace Jiban.Nswag
         /// Get Widget Orders Monthly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WidgetOrdersMonthlyResponse> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<WidgetOrdersMonthlyResponse>> GetWidgetOrdersMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6156,7 +6156,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<WidgetOrdersMonthlyResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -6182,7 +6182,7 @@ namespace Jiban.Nswag
         /// Get Widget Orders Monthly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<WidgetClientsMonthlyResponse> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<WidgetClientsMonthlyResponse>> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return GetWidgetClientsMonthlyAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -6192,7 +6192,7 @@ namespace Jiban.Nswag
         /// Get Widget Orders Monthly
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<WidgetClientsMonthlyResponse> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<WidgetClientsMonthlyResponse>> GetWidgetClientsMonthlyAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6260,7 +6260,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<WidgetClientsMonthlyResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -6677,25 +6677,25 @@ namespace Jiban.Nswag
     public partial interface IGeographicLocationClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ProvinciasAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ProvinciasAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ProvinciasAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ProvinciasAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> CantonesAsync(int? cantonId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> CantonesAsync(int? cantonId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ParroquiasAsync(int? parroquiaId);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> CantonesAsync(int? cantonId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ParroquiasAsync(int? parroquiaId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> CantonesAsync(int? cantonId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ParroquiasAsync(int? parroquiaId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ParroquiasAsync(int? parroquiaId, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -6748,14 +6748,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ProvinciasAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ProvinciasAsync()
         {
             return ProvinciasAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ProvinciasAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ProvinciasAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6801,7 +6801,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -6824,14 +6824,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> CantonesAsync(int? cantonId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> CantonesAsync(int? cantonId)
         {
             return CantonesAsync(cantonId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> CantonesAsync(int? cantonId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> CantonesAsync(int? cantonId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6883,7 +6883,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -6906,14 +6906,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ParroquiasAsync(int? parroquiaId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ParroquiasAsync(int? parroquiaId)
         {
             return ParroquiasAsync(parroquiaId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<GeographicLocationResponse>> ParroquiasAsync(int? parroquiaId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>> ParroquiasAsync(int? parroquiaId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6965,7 +6965,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<GeographicLocationResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -7120,39 +7120,39 @@ namespace Jiban.Nswag
     public partial interface IIncomeClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfIncomeSearchResponse> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfIncomeSearchResponse>> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfIncomeSearchResponse> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfIncomeSearchResponse>> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeByIdResponse> GetOrderByIdAsync(System.Guid? incomeId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeByIdResponse> GetOrderByIdAsync(System.Guid? incomeId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeCreateResponse> CreateAsync(IncomeCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeByIdResponse>> GetOrderByIdAsync(System.Guid? incomeId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeCreateResponse> CreateAsync(IncomeCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeByIdResponse>> GetOrderByIdAsync(System.Guid? incomeId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeUpdateResponse> UpdateAsync(IncomeUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeUpdateResponse> UpdateAsync(IncomeUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeDeleteResponse> DeleteAsync(IncomeDeleteRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeCreateResponse>> CreateAsync(IncomeCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<IncomeDeleteResponse> DeleteAsync(IncomeDeleteRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeCreateResponse>> CreateAsync(IncomeCreateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeUpdateResponse>> UpdateAsync(IncomeUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeUpdateResponse>> UpdateAsync(IncomeUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeDeleteResponse>> DeleteAsync(IncomeDeleteRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<IncomeDeleteResponse>> DeleteAsync(IncomeDeleteRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> GetDepositReportAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate);
@@ -7212,14 +7212,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfIncomeSearchResponse> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfIncomeSearchResponse>> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize)
         {
             return GetDepositsAsync(startDate, endDate, orderStatusType, documentSriStatusType, listOrderItemConfigurationContent, depositFilterType, search, currentPage, pageSize, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfIncomeSearchResponse> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfIncomeSearchResponse>> GetDepositsAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, DocumentSriStatusType? documentSriStatusType, System.Collections.Generic.IEnumerable<OrderItemConfigurationContent> listOrderItemConfigurationContent, DepositFilterType? depositFilterType, string search, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -7303,7 +7303,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfIncomeSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -7326,14 +7326,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<IncomeByIdResponse> GetOrderByIdAsync(System.Guid? incomeId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<IncomeByIdResponse>> GetOrderByIdAsync(System.Guid? incomeId)
         {
             return GetOrderByIdAsync(incomeId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<IncomeByIdResponse> GetOrderByIdAsync(System.Guid? incomeId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<IncomeByIdResponse>> GetOrderByIdAsync(System.Guid? incomeId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -7385,7 +7385,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<IncomeByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -7408,14 +7408,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<IncomeCreateResponse> CreateAsync(IncomeCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<IncomeCreateResponse>> CreateAsync(IncomeCreateRequest request)
         {
             return CreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<IncomeCreateResponse> CreateAsync(IncomeCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<IncomeCreateResponse>> CreateAsync(IncomeCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -7468,7 +7468,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<IncomeCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -7491,14 +7491,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<IncomeUpdateResponse> UpdateAsync(IncomeUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<IncomeUpdateResponse>> UpdateAsync(IncomeUpdateRequest request)
         {
             return UpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<IncomeUpdateResponse> UpdateAsync(IncomeUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<IncomeUpdateResponse>> UpdateAsync(IncomeUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -7551,7 +7551,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<IncomeUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -7574,14 +7574,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<IncomeDeleteResponse> DeleteAsync(IncomeDeleteRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<IncomeDeleteResponse>> DeleteAsync(IncomeDeleteRequest request)
         {
             return DeleteAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<IncomeDeleteResponse> DeleteAsync(IncomeDeleteRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<IncomeDeleteResponse>> DeleteAsync(IncomeDeleteRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -7634,7 +7634,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<IncomeDeleteResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -7873,25 +7873,25 @@ namespace Jiban.Nswag
     public partial interface IInvoiceClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InvoiceCreateUpdateResponse> CreateAsync(InvoiceCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<InvoiceCreateUpdateResponse>> CreateAsync(InvoiceCreateUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InvoiceCreateUpdateResponse> CreateAsync(InvoiceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<InvoiceCreateUpdateResponse>> CreateAsync(InvoiceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InvoiceByIdResponse> InvoiceByIdAsync(System.Guid? sriDocumentId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InvoiceByIdResponse> InvoiceByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InvoicePdfResponse> GetOrdersAsync(System.Guid? sriDocumentId);
+        System.Threading.Tasks.Task<SwaggerResponse<InvoiceByIdResponse>> InvoiceByIdAsync(System.Guid? sriDocumentId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<InvoicePdfResponse> GetOrdersAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<InvoiceByIdResponse>> InvoiceByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<InvoicePdfResponse>> GetOrdersAsync(System.Guid? sriDocumentId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<InvoicePdfResponse>> GetOrdersAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -7944,14 +7944,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<InvoiceCreateUpdateResponse> CreateAsync(InvoiceCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<InvoiceCreateUpdateResponse>> CreateAsync(InvoiceCreateUpdateRequest request)
         {
             return CreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<InvoiceCreateUpdateResponse> CreateAsync(InvoiceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<InvoiceCreateUpdateResponse>> CreateAsync(InvoiceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -8004,7 +8004,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<InvoiceCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8027,14 +8027,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<InvoiceByIdResponse> InvoiceByIdAsync(System.Guid? sriDocumentId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<InvoiceByIdResponse>> InvoiceByIdAsync(System.Guid? sriDocumentId)
         {
             return InvoiceByIdAsync(sriDocumentId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<InvoiceByIdResponse> InvoiceByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<InvoiceByIdResponse>> InvoiceByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8086,7 +8086,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<InvoiceByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8109,14 +8109,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<InvoicePdfResponse> GetOrdersAsync(System.Guid? sriDocumentId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<InvoicePdfResponse>> GetOrdersAsync(System.Guid? sriDocumentId)
         {
             return GetOrdersAsync(sriDocumentId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<InvoicePdfResponse> GetOrdersAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<InvoicePdfResponse>> GetOrdersAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8168,7 +8168,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<InvoicePdfResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8323,46 +8323,46 @@ namespace Jiban.Nswag
     public partial interface IOrderClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfOrderSearchResponse> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfOrderSearchResponse>> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfOrderSearchResponse> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfOrderSearchResponse>> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderByIdResponse> OrderByIdAsync(System.Guid? orderId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderByIdResponse> OrderByIdAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderByNumberResponse> OrderByNumberAsync(long? orderNumber);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderByIdResponse>> OrderByIdAsync(System.Guid? orderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderByNumberResponse> OrderByNumberAsync(long? orderNumber, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderByIdResponse>> OrderByIdAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderCreateUpdateResponse> CreateAsync(OrderCreateUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderCreateUpdateResponse> CreateAsync(OrderCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderActivateResponse> ActivateAsync(System.Guid? orderId);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderByNumberResponse>> OrderByNumberAsync(long? orderNumber);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderActivateResponse> ActivateAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderByNumberResponse>> OrderByNumberAsync(long? orderNumber, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderPdfResponse> PdfAsync(System.Guid? orderId);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderCreateUpdateResponse>> CreateAsync(OrderCreateUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderPdfResponse> PdfAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderCreateUpdateResponse>> CreateAsync(OrderCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderActivateResponse>> ActivateAsync(System.Guid? orderId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderActivateResponse>> ActivateAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderPdfResponse>> PdfAsync(System.Guid? orderId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderPdfResponse>> PdfAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> ReportAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate);
@@ -8422,14 +8422,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfOrderSearchResponse> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfOrderSearchResponse>> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
         {
             return OrdersAsync(startDate, endDate, orderStatusType, orderFilterType, search, sortDirectionType, currentPage, pageSize, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfOrderSearchResponse> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfOrderSearchResponse>> OrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, OrderStatusType? orderStatusType, OrderFilterType? orderFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8509,7 +8509,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfOrderSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8532,14 +8532,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderByIdResponse> OrderByIdAsync(System.Guid? orderId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderByIdResponse>> OrderByIdAsync(System.Guid? orderId)
         {
             return OrderByIdAsync(orderId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderByIdResponse> OrderByIdAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderByIdResponse>> OrderByIdAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8591,7 +8591,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8614,14 +8614,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderByNumberResponse> OrderByNumberAsync(long? orderNumber)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderByNumberResponse>> OrderByNumberAsync(long? orderNumber)
         {
             return OrderByNumberAsync(orderNumber, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderByNumberResponse> OrderByNumberAsync(long? orderNumber, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderByNumberResponse>> OrderByNumberAsync(long? orderNumber, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8673,7 +8673,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderByNumberResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8696,14 +8696,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderCreateUpdateResponse> CreateAsync(OrderCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderCreateUpdateResponse>> CreateAsync(OrderCreateUpdateRequest request)
         {
             return CreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderCreateUpdateResponse> CreateAsync(OrderCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderCreateUpdateResponse>> CreateAsync(OrderCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -8756,7 +8756,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8779,14 +8779,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderActivateResponse> ActivateAsync(System.Guid? orderId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderActivateResponse>> ActivateAsync(System.Guid? orderId)
         {
             return ActivateAsync(orderId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderActivateResponse> ActivateAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderActivateResponse>> ActivateAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8839,7 +8839,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderActivateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -8862,14 +8862,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderPdfResponse> PdfAsync(System.Guid? orderId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderPdfResponse>> PdfAsync(System.Guid? orderId)
         {
             return PdfAsync(orderId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderPdfResponse> PdfAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderPdfResponse>> PdfAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8921,7 +8921,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderPdfResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -9160,32 +9160,32 @@ namespace Jiban.Nswag
     public partial interface IOrderItemClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemByIdResponse> OrderItemAsync(OrderItemByIdRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemByIdResponse>> OrderItemAsync(OrderItemByIdRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemByIdResponse> OrderItemAsync(OrderItemByIdRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemByIdResponse>> OrderItemAsync(OrderItemByIdRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemCreateResponse> OrderItemCreateAsync(OrderItemCreateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemCreateResponse> OrderItemCreateAsync(OrderItemCreateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemStatusUpdateResponse> StatusUpdateAsync(OrderItemStatusUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemCreateResponse>> OrderItemCreateAsync(OrderItemCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemStatusUpdateResponse> StatusUpdateAsync(OrderItemStatusUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemCreateResponse>> OrderItemCreateAsync(OrderItemCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemTrackingUpdateResponse> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemStatusUpdateResponse>> StatusUpdateAsync(OrderItemStatusUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemTrackingUpdateResponse> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemStatusUpdateResponse>> StatusUpdateAsync(OrderItemStatusUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemTrackingUpdateResponse>> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemTrackingUpdateResponse>> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -9238,14 +9238,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderItemByIdResponse> OrderItemAsync(OrderItemByIdRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderItemByIdResponse>> OrderItemAsync(OrderItemByIdRequest request)
         {
             return OrderItemAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderItemByIdResponse> OrderItemAsync(OrderItemByIdRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderItemByIdResponse>> OrderItemAsync(OrderItemByIdRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -9298,7 +9298,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderItemByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -9321,14 +9321,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderItemCreateResponse> OrderItemCreateAsync(OrderItemCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderItemCreateResponse>> OrderItemCreateAsync(OrderItemCreateRequest request)
         {
             return OrderItemCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderItemCreateResponse> OrderItemCreateAsync(OrderItemCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderItemCreateResponse>> OrderItemCreateAsync(OrderItemCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -9381,7 +9381,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderItemCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -9404,14 +9404,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderItemStatusUpdateResponse> StatusUpdateAsync(OrderItemStatusUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderItemStatusUpdateResponse>> StatusUpdateAsync(OrderItemStatusUpdateRequest request)
         {
             return StatusUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderItemStatusUpdateResponse> StatusUpdateAsync(OrderItemStatusUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderItemStatusUpdateResponse>> StatusUpdateAsync(OrderItemStatusUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -9464,7 +9464,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderItemStatusUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -9487,14 +9487,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderItemTrackingUpdateResponse> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderItemTrackingUpdateResponse>> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request)
         {
             return TrackingUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderItemTrackingUpdateResponse> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderItemTrackingUpdateResponse>> TrackingUpdateAsync(OrderItemTrackingUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -9547,7 +9547,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderItemTrackingUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -9705,14 +9705,14 @@ namespace Jiban.Nswag
         /// Returns payment by orderId
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentByIdResponse> CreateArticleAsync(System.Guid? orderId);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentByIdResponse>> CreateArticleAsync(System.Guid? orderId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns payment by orderId
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentByIdResponse> CreateArticleAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentByIdResponse>> CreateArticleAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -9768,7 +9768,7 @@ namespace Jiban.Nswag
         /// Returns payment by orderId
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaymentByIdResponse> CreateArticleAsync(System.Guid? orderId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaymentByIdResponse>> CreateArticleAsync(System.Guid? orderId)
         {
             return CreateArticleAsync(orderId, System.Threading.CancellationToken.None);
         }
@@ -9778,7 +9778,7 @@ namespace Jiban.Nswag
         /// Returns payment by orderId
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaymentByIdResponse> CreateArticleAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaymentByIdResponse>> CreateArticleAsync(System.Guid? orderId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -9830,7 +9830,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaymentByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -9985,46 +9985,46 @@ namespace Jiban.Nswag
     public partial interface IPaymentMethodsClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>> PaymentMethodSearchAsync(bool? availableOnly);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>>> PaymentMethodSearchAsync(bool? availableOnly);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>> PaymentMethodSearchAsync(bool? availableOnly, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>>> PaymentMethodSearchAsync(bool? availableOnly, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodByIdResponse> GetPaymentMethodByIdAsync(System.Guid? id);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodByIdResponse> GetPaymentMethodByIdAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodCreateResponse> CreateAsync(PaymentMethodCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodByIdResponse>> GetPaymentMethodByIdAsync(System.Guid? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodCreateResponse> CreateAsync(PaymentMethodCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodByIdResponse>> GetPaymentMethodByIdAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodUpdateResponse> EditAsync(PaymentMethodUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodUpdateResponse> EditAsync(PaymentMethodUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodPriorityUpdateResponse> PriorityAsync(PaymentMethodPriorityUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodCreateResponse>> CreateAsync(PaymentMethodCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaymentMethodPriorityUpdateResponse> PriorityAsync(PaymentMethodPriorityUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodCreateResponse>> CreateAsync(PaymentMethodCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> DeleteAsync(System.Guid? idProducto);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodUpdateResponse>> EditAsync(PaymentMethodUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> DeleteAsync(System.Guid? idProducto, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodUpdateResponse>> EditAsync(PaymentMethodUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodPriorityUpdateResponse>> PriorityAsync(PaymentMethodPriorityUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodPriorityUpdateResponse>> PriorityAsync(PaymentMethodPriorityUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<int>> DeleteAsync(System.Guid? idProducto);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<int>> DeleteAsync(System.Guid? idProducto, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -10077,14 +10077,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>> PaymentMethodSearchAsync(bool? availableOnly)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>>> PaymentMethodSearchAsync(bool? availableOnly)
         {
             return PaymentMethodSearchAsync(availableOnly, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>> PaymentMethodSearchAsync(bool? availableOnly, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>>> PaymentMethodSearchAsync(bool? availableOnly, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -10136,7 +10136,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<PaymentMethodByIdResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -10159,14 +10159,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaymentMethodByIdResponse> GetPaymentMethodByIdAsync(System.Guid? id)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodByIdResponse>> GetPaymentMethodByIdAsync(System.Guid? id)
         {
             return GetPaymentMethodByIdAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaymentMethodByIdResponse> GetPaymentMethodByIdAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodByIdResponse>> GetPaymentMethodByIdAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -10218,7 +10218,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaymentMethodByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -10241,14 +10241,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaymentMethodCreateResponse> CreateAsync(PaymentMethodCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodCreateResponse>> CreateAsync(PaymentMethodCreateRequest request)
         {
             return CreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaymentMethodCreateResponse> CreateAsync(PaymentMethodCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodCreateResponse>> CreateAsync(PaymentMethodCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -10301,7 +10301,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaymentMethodCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -10324,14 +10324,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaymentMethodUpdateResponse> EditAsync(PaymentMethodUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodUpdateResponse>> EditAsync(PaymentMethodUpdateRequest request)
         {
             return EditAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaymentMethodUpdateResponse> EditAsync(PaymentMethodUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodUpdateResponse>> EditAsync(PaymentMethodUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -10384,7 +10384,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaymentMethodUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -10407,14 +10407,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaymentMethodPriorityUpdateResponse> PriorityAsync(PaymentMethodPriorityUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodPriorityUpdateResponse>> PriorityAsync(PaymentMethodPriorityUpdateRequest request)
         {
             return PriorityAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaymentMethodPriorityUpdateResponse> PriorityAsync(PaymentMethodPriorityUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaymentMethodPriorityUpdateResponse>> PriorityAsync(PaymentMethodPriorityUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -10467,7 +10467,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaymentMethodPriorityUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -10490,14 +10490,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<int> DeleteAsync(System.Guid? idProducto)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<int>> DeleteAsync(System.Guid? idProducto)
         {
             return DeleteAsync(idProducto, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> DeleteAsync(System.Guid? idProducto, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<int>> DeleteAsync(System.Guid? idProducto, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -10550,7 +10550,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<int>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -10708,14 +10708,14 @@ namespace Jiban.Nswag
         /// Return customer information external
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PersonInfoResponse> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<PersonInfoResponse>> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Return customer information external
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PersonInfoResponse> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PersonInfoResponse>> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -10771,7 +10771,7 @@ namespace Jiban.Nswag
         /// Return customer information external
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PersonInfoResponse> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PersonInfoResponse>> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return PersonInfoAsync(ndocumento, identificationType, businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
@@ -10781,7 +10781,7 @@ namespace Jiban.Nswag
         /// Return customer information external
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PersonInfoResponse> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PersonInfoResponse>> PersonInfoAsync(string ndocumento, string identificationType, string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -10857,7 +10857,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PersonInfoResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -11012,25 +11012,25 @@ namespace Jiban.Nswag
     public partial interface IProductClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfProductSearchResponse> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfProductSearchResponse>> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfProductSearchResponse> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfProductSearchResponse>> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProductByIdResponse> ProductByIdAsync(System.Guid? productId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProductByIdResponse> ProductByIdAsync(System.Guid? productId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProductCreateUpdateResponse> CreateUpdateAsync(ProductCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<ProductByIdResponse>> ProductByIdAsync(System.Guid? productId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProductCreateUpdateResponse> CreateUpdateAsync(ProductCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ProductByIdResponse>> ProductByIdAsync(System.Guid? productId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ProductCreateUpdateResponse>> CreateUpdateAsync(ProductCreateUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ProductCreateUpdateResponse>> CreateUpdateAsync(ProductCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> ReportAsync(ProductReportRequest request);
@@ -11090,14 +11090,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfProductSearchResponse> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfProductSearchResponse>> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
         {
             return ProductsAsync(accessAll, startDate, endDate, productFilterType, search, sortDirectionType, currentPage, pageSize, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfProductSearchResponse> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfProductSearchResponse>> ProductsAsync(bool? accessAll, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, ProductFilterType? productFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -11177,7 +11177,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfProductSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -11200,14 +11200,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ProductByIdResponse> ProductByIdAsync(System.Guid? productId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ProductByIdResponse>> ProductByIdAsync(System.Guid? productId)
         {
             return ProductByIdAsync(productId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ProductByIdResponse> ProductByIdAsync(System.Guid? productId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ProductByIdResponse>> ProductByIdAsync(System.Guid? productId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -11259,7 +11259,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ProductByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -11282,14 +11282,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ProductCreateUpdateResponse> CreateUpdateAsync(ProductCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ProductCreateUpdateResponse>> CreateUpdateAsync(ProductCreateUpdateRequest request)
         {
             return CreateUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ProductCreateUpdateResponse> CreateUpdateAsync(ProductCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ProductCreateUpdateResponse>> CreateUpdateAsync(ProductCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -11342,7 +11342,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ProductCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -11577,32 +11577,32 @@ namespace Jiban.Nswag
     public partial interface IReferralGuideClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuideCreateResponse> CreateAsync(ReferralGuideCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideCreateResponse>> CreateAsync(ReferralGuideCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuideCreateResponse> CreateAsync(ReferralGuideCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideCreateResponse>> CreateAsync(ReferralGuideCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuideUpdateResponse> UpdateAsync(ReferralGuideUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuideUpdateResponse> UpdateAsync(ReferralGuideUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuideByIdResponse> ReferralGuideByIdAsync(System.Guid? sriDocumentId);
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideUpdateResponse>> UpdateAsync(ReferralGuideUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuideByIdResponse> ReferralGuideByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideUpdateResponse>> UpdateAsync(ReferralGuideUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuidePdfResponse> PdfAsync(System.Guid? sriDocumentId);
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideByIdResponse>> ReferralGuideByIdAsync(System.Guid? sriDocumentId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReferralGuidePdfResponse> PdfAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideByIdResponse>> ReferralGuideByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuidePdfResponse>> PdfAsync(System.Guid? sriDocumentId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<ReferralGuidePdfResponse>> PdfAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -11655,14 +11655,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReferralGuideCreateResponse> CreateAsync(ReferralGuideCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideCreateResponse>> CreateAsync(ReferralGuideCreateRequest request)
         {
             return CreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReferralGuideCreateResponse> CreateAsync(ReferralGuideCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideCreateResponse>> CreateAsync(ReferralGuideCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -11715,7 +11715,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ReferralGuideCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -11738,14 +11738,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReferralGuideUpdateResponse> UpdateAsync(ReferralGuideUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideUpdateResponse>> UpdateAsync(ReferralGuideUpdateRequest request)
         {
             return UpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReferralGuideUpdateResponse> UpdateAsync(ReferralGuideUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideUpdateResponse>> UpdateAsync(ReferralGuideUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -11798,7 +11798,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ReferralGuideUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -11821,14 +11821,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReferralGuideByIdResponse> ReferralGuideByIdAsync(System.Guid? sriDocumentId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideByIdResponse>> ReferralGuideByIdAsync(System.Guid? sriDocumentId)
         {
             return ReferralGuideByIdAsync(sriDocumentId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReferralGuideByIdResponse> ReferralGuideByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ReferralGuideByIdResponse>> ReferralGuideByIdAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -11880,7 +11880,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ReferralGuideByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -11903,14 +11903,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<ReferralGuidePdfResponse> PdfAsync(System.Guid? sriDocumentId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<ReferralGuidePdfResponse>> PdfAsync(System.Guid? sriDocumentId)
         {
             return PdfAsync(sriDocumentId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ReferralGuidePdfResponse> PdfAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<ReferralGuidePdfResponse>> PdfAsync(System.Guid? sriDocumentId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -11962,7 +11962,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<ReferralGuidePdfResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12117,60 +12117,60 @@ namespace Jiban.Nswag
     public partial interface IRolesClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>> ListRolesAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>>> ListRolesAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>> ListRolesAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>>> ListRolesAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PermissionDisplay>> ListPermissionsAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PermissionDisplay>> ListPermissionsAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RoleCreateUpdateDto> ViewAsync(string roleName);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PermissionDisplay>>> ListPermissionsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RoleCreateUpdateDto> ViewAsync(string roleName, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PermissionDisplay>>> ListPermissionsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RoleCreateUpdateDto> EditGETAsync(string roleName);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RoleCreateUpdateDto> EditGETAsync(string roleName, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> EditPOSTAsync(RoleCreateUpdateDto input);
+        System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> ViewAsync(string roleName);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> EditPOSTAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> ViewAsync(string roleName, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> CreateAsync(RoleCreateUpdateDto input);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> CreateAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(RoleDeleteConfirmDto request);
+        System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> EditGETAsync(string roleName);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(RoleDeleteConfirmDto request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> EditGETAsync(string roleName, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> ListAllUsersAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditPOSTAsync(RoleCreateUpdateDto input);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> ListAllUsersAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditPOSTAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> CreateAsync(RoleCreateUpdateDto input);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> CreateAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(RoleDeleteConfirmDto request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(RoleDeleteConfirmDto request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> ListAllUsersAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> ListAllUsersAsync(System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -12223,14 +12223,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>> ListRolesAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>>> ListRolesAsync()
         {
             return ListRolesAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>> ListRolesAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>>> ListRolesAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12276,7 +12276,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<RoleWithPermissionNamesDto>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12299,14 +12299,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PermissionDisplay>> ListPermissionsAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PermissionDisplay>>> ListPermissionsAsync()
         {
             return ListPermissionsAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PermissionDisplay>> ListPermissionsAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<PermissionDisplay>>> ListPermissionsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12352,7 +12352,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<PermissionDisplay>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12375,14 +12375,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RoleCreateUpdateDto> ViewAsync(string roleName)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> ViewAsync(string roleName)
         {
             return ViewAsync(roleName, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RoleCreateUpdateDto> ViewAsync(string roleName, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> ViewAsync(string roleName, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12434,7 +12434,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<RoleCreateUpdateDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12457,14 +12457,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RoleCreateUpdateDto> EditGETAsync(string roleName)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> EditGETAsync(string roleName)
         {
             return EditGETAsync(roleName, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RoleCreateUpdateDto> EditGETAsync(string roleName, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<RoleCreateUpdateDto>> EditGETAsync(string roleName, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12516,7 +12516,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<RoleCreateUpdateDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12539,14 +12539,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> EditPOSTAsync(RoleCreateUpdateDto input)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditPOSTAsync(RoleCreateUpdateDto input)
         {
             return EditPOSTAsync(input, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> EditPOSTAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditPOSTAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken)
         {
             if (input == null)
                 throw new System.ArgumentNullException("input");
@@ -12599,7 +12599,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12622,14 +12622,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> CreateAsync(RoleCreateUpdateDto input)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> CreateAsync(RoleCreateUpdateDto input)
         {
             return CreateAsync(input, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> CreateAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> CreateAsync(RoleCreateUpdateDto input, System.Threading.CancellationToken cancellationToken)
         {
             if (input == null)
                 throw new System.ArgumentNullException("input");
@@ -12682,7 +12682,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12705,14 +12705,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(RoleDeleteConfirmDto request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(RoleDeleteConfirmDto request)
         {
             return DeleteAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> DeleteAsync(RoleDeleteConfirmDto request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteAsync(RoleDeleteConfirmDto request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -12765,7 +12765,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12788,14 +12788,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> ListAllUsersAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> ListAllUsersAsync()
         {
             return ListAllUsersAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> ListAllUsersAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> ListAllUsersAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12841,7 +12841,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<string>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -12996,193 +12996,193 @@ namespace Jiban.Nswag
     public partial interface ISettingClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankSearchResponse> BankSearchAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> BankSearchAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankSearchResponse> BankSearchAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> BankSearchAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankByIdResponse> BankByIdAsync(System.Guid? settingId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankByIdResponse> BankByIdAsync(System.Guid? settingId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankCreateResponse> BankCreateAsync(BankCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<BankByIdResponse>> BankByIdAsync(System.Guid? settingId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankCreateResponse> BankCreateAsync(BankCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<BankByIdResponse>> BankByIdAsync(System.Guid? settingId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankUpdateResponse> BankUpdateAsync(BankUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankUpdateResponse> BankUpdateAsync(BankUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CloudStorageCreateUpdateResponse> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<BankCreateResponse>> BankCreateAsync(BankCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CloudStorageCreateUpdateResponse> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<BankCreateResponse>> BankCreateAsync(BankCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpResponse> SmtpAsync(SmtpRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpResponse> SmtpAsync(SmtpRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpCreateResponse> SmtpCreateAsync(SmtpCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<BankUpdateResponse>> BankUpdateAsync(BankUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpCreateResponse> SmtpCreateAsync(SmtpCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<BankUpdateResponse>> BankUpdateAsync(BankUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpUpdateResponse> SmtpUpdateAsync(SmtpUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpUpdateResponse> SmtpUpdateAsync(SmtpUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GeneralConfigurationResponse> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<CloudStorageCreateUpdateResponse>> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GeneralConfigurationResponse> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CloudStorageCreateUpdateResponse>> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderConfigurationResponse> OrderConfigurationAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderConfigurationResponse> OrderConfigurationAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemConfigurationResponse> OrderItemConfigurationAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpAsync(SmtpRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemConfigurationResponse> OrderItemConfigurationAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpAsync(SmtpRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SriResponse> SriConfigurationAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SriResponse> SriConfigurationAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<S3ConfigurationSource> S3ConfigurationAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpCreateResponse>> SmtpCreateAsync(SmtpCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<S3ConfigurationSource> S3ConfigurationAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpCreateResponse>> SmtpCreateAsync(SmtpCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpResponse> SmtpConfigurationAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SmtpResponse> SmtpConfigurationAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GeneralCreateUpdateResponse> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpUpdateResponse>> SmtpUpdateAsync(SmtpUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GeneralCreateUpdateResponse> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpUpdateResponse>> SmtpUpdateAsync(SmtpUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterResponse>> CounterAsync(CounterRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterResponse>> CounterAsync(CounterRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<GeneralConfigurationResponse>> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<GeneralConfigurationResponse>> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> CurrentMonthsAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> CurrentMonthsAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemConfigurationUpdateResponse> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationResponse>> OrderConfigurationAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderItemConfigurationUpdateResponse> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationResponse>> OrderConfigurationAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderConfigurationUpdateResponse> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrderConfigurationUpdateResponse> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SriCreateUpdateResponse> SriCreateUpdateAsync(SriCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationResponse>> OrderItemConfigurationAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SriCreateUpdateResponse> SriCreateUpdateAsync(SriCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationResponse>> OrderItemConfigurationAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CheckCertificateResponse> CheckCertificateAsync(CheckCertificateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CheckCertificateResponse> CheckCertificateAsync(CheckCertificateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GlobalResponse> GlobalConfigurationAsync(GlobalRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<SriResponse>> SriConfigurationAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GlobalResponse> GlobalConfigurationAsync(GlobalRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SriResponse>> SriConfigurationAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TraceResponse> ReceiveTraceAsync(JsonDocument traceData);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TraceResponse> ReceiveTraceAsync(JsonDocument traceData, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankSearchResponse> HealthyAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<S3ConfigurationSource>> S3ConfigurationAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<BankSearchResponse> HealthyAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<S3ConfigurationSource>> S3ConfigurationAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserPreferenceResponse> UserPreferenceGETAsync(string key);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserPreferenceResponse> UserPreferenceGETAsync(string key, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserPreferenceCreateUpdateResponse> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpConfigurationAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserPreferenceCreateUpdateResponse> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpConfigurationAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GeneralCreateUpdateResponse>> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GeneralCreateUpdateResponse>> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterResponse>>> CounterAsync(CounterRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterResponse>>> CounterAsync(CounterRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> CurrentMonthsAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> CurrentMonthsAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationUpdateResponse>> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationUpdateResponse>> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationUpdateResponse>> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationUpdateResponse>> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<SriCreateUpdateResponse>> SriCreateUpdateAsync(SriCreateUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<SriCreateUpdateResponse>> SriCreateUpdateAsync(SriCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CheckCertificateResponse>> CheckCertificateAsync(CheckCertificateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CheckCertificateResponse>> CheckCertificateAsync(CheckCertificateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GlobalResponse>> GlobalConfigurationAsync(GlobalRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GlobalResponse>> GlobalConfigurationAsync(GlobalRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<TraceResponse>> ReceiveTraceAsync(JsonDocument traceData);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<TraceResponse>> ReceiveTraceAsync(JsonDocument traceData, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> HealthyAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> HealthyAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceResponse>> UserPreferenceGETAsync(string key);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceResponse>> UserPreferenceGETAsync(string key, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceCreateUpdateResponse>> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceCreateUpdateResponse>> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -13235,14 +13235,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<BankSearchResponse> BankSearchAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> BankSearchAsync()
         {
             return BankSearchAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<BankSearchResponse> BankSearchAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> BankSearchAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -13288,7 +13288,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<BankSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13311,14 +13311,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<BankByIdResponse> BankByIdAsync(System.Guid? settingId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<BankByIdResponse>> BankByIdAsync(System.Guid? settingId)
         {
             return BankByIdAsync(settingId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<BankByIdResponse> BankByIdAsync(System.Guid? settingId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BankByIdResponse>> BankByIdAsync(System.Guid? settingId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -13370,7 +13370,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<BankByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13393,14 +13393,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<BankCreateResponse> BankCreateAsync(BankCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<BankCreateResponse>> BankCreateAsync(BankCreateRequest request)
         {
             return BankCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<BankCreateResponse> BankCreateAsync(BankCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BankCreateResponse>> BankCreateAsync(BankCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -13453,7 +13453,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<BankCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13476,14 +13476,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<BankUpdateResponse> BankUpdateAsync(BankUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<BankUpdateResponse>> BankUpdateAsync(BankUpdateRequest request)
         {
             return BankUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<BankUpdateResponse> BankUpdateAsync(BankUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BankUpdateResponse>> BankUpdateAsync(BankUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -13536,7 +13536,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<BankUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13559,14 +13559,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CloudStorageCreateUpdateResponse> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CloudStorageCreateUpdateResponse>> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request)
         {
             return CloudStorageCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CloudStorageCreateUpdateResponse> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CloudStorageCreateUpdateResponse>> CloudStorageCreateAsync(CloudStorageCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -13619,7 +13619,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CloudStorageCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13642,14 +13642,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SmtpResponse> SmtpAsync(SmtpRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpAsync(SmtpRequest request)
         {
             return SmtpAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SmtpResponse> SmtpAsync(SmtpRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpAsync(SmtpRequest request, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -13701,7 +13701,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SmtpResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13724,14 +13724,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SmtpCreateResponse> SmtpCreateAsync(SmtpCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SmtpCreateResponse>> SmtpCreateAsync(SmtpCreateRequest request)
         {
             return SmtpCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SmtpCreateResponse> SmtpCreateAsync(SmtpCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SmtpCreateResponse>> SmtpCreateAsync(SmtpCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -13784,7 +13784,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SmtpCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13807,14 +13807,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SmtpUpdateResponse> SmtpUpdateAsync(SmtpUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SmtpUpdateResponse>> SmtpUpdateAsync(SmtpUpdateRequest request)
         {
             return SmtpUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SmtpUpdateResponse> SmtpUpdateAsync(SmtpUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SmtpUpdateResponse>> SmtpUpdateAsync(SmtpUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -13867,7 +13867,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SmtpUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13890,14 +13890,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GeneralConfigurationResponse> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<GeneralConfigurationResponse>> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId)
         {
             return GeneralConfigurationAsync(businessActivityName, processingType, traceId, spanId, userId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GeneralConfigurationResponse> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<GeneralConfigurationResponse>> GeneralConfigurationAsync(string businessActivityName, ProcessingType? processingType, string traceId, string spanId, System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -13965,7 +13965,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<GeneralConfigurationResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -13988,14 +13988,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderConfigurationResponse> OrderConfigurationAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationResponse>> OrderConfigurationAsync()
         {
             return OrderConfigurationAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderConfigurationResponse> OrderConfigurationAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationResponse>> OrderConfigurationAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -14041,7 +14041,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderConfigurationResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14064,14 +14064,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderItemConfigurationResponse> OrderItemConfigurationAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationResponse>> OrderItemConfigurationAsync()
         {
             return OrderItemConfigurationAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderItemConfigurationResponse> OrderItemConfigurationAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationResponse>> OrderItemConfigurationAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -14117,7 +14117,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderItemConfigurationResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14140,14 +14140,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SriResponse> SriConfigurationAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SriResponse>> SriConfigurationAsync()
         {
             return SriConfigurationAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SriResponse> SriConfigurationAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SriResponse>> SriConfigurationAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -14193,7 +14193,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SriResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14216,14 +14216,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<S3ConfigurationSource> S3ConfigurationAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<S3ConfigurationSource>> S3ConfigurationAsync()
         {
             return S3ConfigurationAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<S3ConfigurationSource> S3ConfigurationAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<S3ConfigurationSource>> S3ConfigurationAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -14269,7 +14269,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<S3ConfigurationSource>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14292,14 +14292,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SmtpResponse> SmtpConfigurationAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpConfigurationAsync()
         {
             return SmtpConfigurationAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SmtpResponse> SmtpConfigurationAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SmtpResponse>> SmtpConfigurationAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -14345,7 +14345,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SmtpResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14368,14 +14368,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GeneralCreateUpdateResponse> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<GeneralCreateUpdateResponse>> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request)
         {
             return GeneralCreateUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GeneralCreateUpdateResponse> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<GeneralCreateUpdateResponse>> GeneralCreateUpdateAsync(GeneralCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -14428,7 +14428,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<GeneralCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14451,14 +14451,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterResponse>> CounterAsync(CounterRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterResponse>>> CounterAsync(CounterRequest request)
         {
             return CounterAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterResponse>> CounterAsync(CounterRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterResponse>>> CounterAsync(CounterRequest request, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -14510,7 +14510,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<CounterResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14533,14 +14533,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request)
         {
             return CounterCreateUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>>> CounterCreateUpdateAsync(CounterCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -14593,7 +14593,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<CounterCreateUpdateResponse>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14616,14 +14616,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> CurrentMonthsAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> CurrentMonthsAsync()
         {
             return CurrentMonthsAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> CurrentMonthsAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<string>>> CurrentMonthsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -14669,7 +14669,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<string>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14692,14 +14692,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderItemConfigurationUpdateResponse> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationUpdateResponse>> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request)
         {
             return OrderItemConfigurationUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderItemConfigurationUpdateResponse> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderItemConfigurationUpdateResponse>> OrderItemConfigurationUpdateAsync(OrderItemConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -14752,7 +14752,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderItemConfigurationUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14775,14 +14775,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<OrderConfigurationUpdateResponse> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationUpdateResponse>> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request)
         {
             return OrderConfigurationUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<OrderConfigurationUpdateResponse> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<OrderConfigurationUpdateResponse>> OrderConfigurationUpdateAsync(OrderConfigurationUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -14835,7 +14835,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<OrderConfigurationUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14858,14 +14858,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SriCreateUpdateResponse> SriCreateUpdateAsync(SriCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SriCreateUpdateResponse>> SriCreateUpdateAsync(SriCreateUpdateRequest request)
         {
             return SriCreateUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SriCreateUpdateResponse> SriCreateUpdateAsync(SriCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SriCreateUpdateResponse>> SriCreateUpdateAsync(SriCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -14918,7 +14918,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SriCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -14941,14 +14941,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CheckCertificateResponse> CheckCertificateAsync(CheckCertificateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CheckCertificateResponse>> CheckCertificateAsync(CheckCertificateRequest request)
         {
             return CheckCertificateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CheckCertificateResponse> CheckCertificateAsync(CheckCertificateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CheckCertificateResponse>> CheckCertificateAsync(CheckCertificateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -15001,7 +15001,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CheckCertificateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15024,14 +15024,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GlobalResponse> GlobalConfigurationAsync(GlobalRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<GlobalResponse>> GlobalConfigurationAsync(GlobalRequest request)
         {
             return GlobalConfigurationAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GlobalResponse> GlobalConfigurationAsync(GlobalRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<GlobalResponse>> GlobalConfigurationAsync(GlobalRequest request, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -15083,7 +15083,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<GlobalResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15106,14 +15106,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<TraceResponse> ReceiveTraceAsync(JsonDocument traceData)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<TraceResponse>> ReceiveTraceAsync(JsonDocument traceData)
         {
             return ReceiveTraceAsync(traceData, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TraceResponse> ReceiveTraceAsync(JsonDocument traceData, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<TraceResponse>> ReceiveTraceAsync(JsonDocument traceData, System.Threading.CancellationToken cancellationToken)
         {
             if (traceData == null)
                 throw new System.ArgumentNullException("traceData");
@@ -15166,7 +15166,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<TraceResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15189,14 +15189,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<BankSearchResponse> HealthyAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> HealthyAsync()
         {
             return HealthyAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<BankSearchResponse> HealthyAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BankSearchResponse>> HealthyAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -15242,7 +15242,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<BankSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15265,14 +15265,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<UserPreferenceResponse> UserPreferenceGETAsync(string key)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceResponse>> UserPreferenceGETAsync(string key)
         {
             return UserPreferenceGETAsync(key, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<UserPreferenceResponse> UserPreferenceGETAsync(string key, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceResponse>> UserPreferenceGETAsync(string key, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -15324,7 +15324,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<UserPreferenceResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15347,14 +15347,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<UserPreferenceCreateUpdateResponse> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceCreateUpdateResponse>> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request)
         {
             return UserPreferencePOSTAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<UserPreferenceCreateUpdateResponse> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<UserPreferenceCreateUpdateResponse>> UserPreferencePOSTAsync(UserPreferenceCreateUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -15407,7 +15407,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<UserPreferenceCreateUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15562,109 +15562,109 @@ namespace Jiban.Nswag
     public partial interface ISriClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentSignAuthorizeResponse> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentSignAuthorizeResponse>> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentSignAuthorizeResponse> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentSignAuthorizeResponse>> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentSequentialResponse> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentSequentialResponse> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoCreateResponse> EstablecimientoCreateAsync(EstablecimientoCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentSequentialResponse>> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoCreateResponse> EstablecimientoCreateAsync(EstablecimientoCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentSequentialResponse>> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoUpdateResponse> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoUpdateResponse> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoByIdResponse> EstablecimientoByIdAsync(EstablecimientoByIdRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoCreateResponse>> EstablecimientoCreateAsync(EstablecimientoCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoByIdResponse> EstablecimientoByIdAsync(EstablecimientoByIdRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoCreateResponse>> EstablecimientoCreateAsync(EstablecimientoCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoSearchResponse> EstablecimientoSearchAsync(EstablecimientoSearchRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoSearchResponse> EstablecimientoSearchAsync(EstablecimientoSearchRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PuntoEmisionCreateResponse> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoUpdateResponse>> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PuntoEmisionCreateResponse> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoUpdateResponse>> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PuntoEmisionUpdateResponse> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PuntoEmisionUpdateResponse> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PuntoEmisionSearchResponse> PuntoEmisionSearchAsync(System.Guid? establecimientoId);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoByIdResponse>> EstablecimientoByIdAsync(EstablecimientoByIdRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PuntoEmisionSearchResponse> PuntoEmisionSearchAsync(System.Guid? establecimientoId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoByIdResponse>> EstablecimientoByIdAsync(EstablecimientoByIdRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TaxeResponse> TaxesAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TaxeResponse> TaxesAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfDocumentSearchResponse> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoSearchResponse>> EstablecimientoSearchAsync(EstablecimientoSearchRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfDocumentSearchResponse> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoSearchResponse>> EstablecimientoSearchAsync(EstablecimientoSearchRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentEmailResponse> SendEmailDocumentAsync(DocumentEmailRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentEmailResponse> SendEmailDocumentAsync(DocumentEmailRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentWhatsAppResponse> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionCreateResponse>> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<DocumentWhatsAppResponse> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionCreateResponse>> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RucInfoResponse> RucinfoAsync(string ruc);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RucInfoResponse> RucinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoInfoResponse> EstablecimientosinfoAsync(string ruc);
+        System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionUpdateResponse>> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EstablecimientoInfoResponse> EstablecimientosinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionUpdateResponse>> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionSearchResponse>> PuntoEmisionSearchAsync(System.Guid? establecimientoId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionSearchResponse>> PuntoEmisionSearchAsync(System.Guid? establecimientoId, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<TaxeResponse>> TaxesAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<TaxeResponse>> TaxesAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfDocumentSearchResponse>> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfDocumentSearchResponse>> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentEmailResponse>> SendEmailDocumentAsync(DocumentEmailRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentEmailResponse>> SendEmailDocumentAsync(DocumentEmailRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentWhatsAppResponse>> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<DocumentWhatsAppResponse>> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<RucInfoResponse>> RucinfoAsync(string ruc);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<RucInfoResponse>> RucinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoInfoResponse>> EstablecimientosinfoAsync(string ruc);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoInfoResponse>> EstablecimientosinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -15717,14 +15717,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<DocumentSignAuthorizeResponse> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<DocumentSignAuthorizeResponse>> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request)
         {
             return SignAuthorizeSriAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<DocumentSignAuthorizeResponse> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<DocumentSignAuthorizeResponse>> SignAuthorizeSriAsync(DocumentSignAuthorizeRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -15777,7 +15777,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<DocumentSignAuthorizeResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15800,14 +15800,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<DocumentSequentialResponse> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<DocumentSequentialResponse>> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId)
         {
             return GetSequentialAsync(documentSriType, establecimientoId, puntoEmisionId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<DocumentSequentialResponse> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<DocumentSequentialResponse>> GetSequentialAsync(DocumentSriType? documentSriType, System.Guid? establecimientoId, System.Guid? puntoEmisionId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -15867,7 +15867,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<DocumentSequentialResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15890,14 +15890,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EstablecimientoCreateResponse> EstablecimientoCreateAsync(EstablecimientoCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoCreateResponse>> EstablecimientoCreateAsync(EstablecimientoCreateRequest request)
         {
             return EstablecimientoCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EstablecimientoCreateResponse> EstablecimientoCreateAsync(EstablecimientoCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoCreateResponse>> EstablecimientoCreateAsync(EstablecimientoCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -15950,7 +15950,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<EstablecimientoCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -15973,14 +15973,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EstablecimientoUpdateResponse> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoUpdateResponse>> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request)
         {
             return EstablecimientoUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EstablecimientoUpdateResponse> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoUpdateResponse>> EstablecimientoUpdateAsync(EstablecimientoUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -16033,7 +16033,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<EstablecimientoUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16056,14 +16056,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EstablecimientoByIdResponse> EstablecimientoByIdAsync(EstablecimientoByIdRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoByIdResponse>> EstablecimientoByIdAsync(EstablecimientoByIdRequest request)
         {
             return EstablecimientoByIdAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EstablecimientoByIdResponse> EstablecimientoByIdAsync(EstablecimientoByIdRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoByIdResponse>> EstablecimientoByIdAsync(EstablecimientoByIdRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -16116,7 +16116,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<EstablecimientoByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16139,14 +16139,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EstablecimientoSearchResponse> EstablecimientoSearchAsync(EstablecimientoSearchRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoSearchResponse>> EstablecimientoSearchAsync(EstablecimientoSearchRequest request)
         {
             return EstablecimientoSearchAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EstablecimientoSearchResponse> EstablecimientoSearchAsync(EstablecimientoSearchRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoSearchResponse>> EstablecimientoSearchAsync(EstablecimientoSearchRequest request, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -16198,7 +16198,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<EstablecimientoSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16221,14 +16221,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PuntoEmisionCreateResponse> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionCreateResponse>> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request)
         {
             return PuntoEmisionCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PuntoEmisionCreateResponse> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionCreateResponse>> PuntoEmisionCreateAsync(PuntoEmisionCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -16281,7 +16281,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PuntoEmisionCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16304,14 +16304,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PuntoEmisionUpdateResponse> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionUpdateResponse>> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request)
         {
             return PuntoEmisionUpdateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PuntoEmisionUpdateResponse> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionUpdateResponse>> PuntoEmisionUpdateAsync(PuntoEmisionUpdateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -16364,7 +16364,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PuntoEmisionUpdateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16387,14 +16387,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PuntoEmisionSearchResponse> PuntoEmisionSearchAsync(System.Guid? establecimientoId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionSearchResponse>> PuntoEmisionSearchAsync(System.Guid? establecimientoId)
         {
             return PuntoEmisionSearchAsync(establecimientoId, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PuntoEmisionSearchResponse> PuntoEmisionSearchAsync(System.Guid? establecimientoId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PuntoEmisionSearchResponse>> PuntoEmisionSearchAsync(System.Guid? establecimientoId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -16446,7 +16446,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PuntoEmisionSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16469,14 +16469,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<TaxeResponse> TaxesAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<TaxeResponse>> TaxesAsync()
         {
             return TaxesAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TaxeResponse> TaxesAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<TaxeResponse>> TaxesAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -16522,7 +16522,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<TaxeResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16545,14 +16545,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfDocumentSearchResponse> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfDocumentSearchResponse>> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
         {
             return GetOrdersAsync(startDate, endDate, documentSriType, documentSriStatusType, documentSriFilterType, search, sortDirectionType, currentPage, pageSize, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfDocumentSearchResponse> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfDocumentSearchResponse>> GetOrdersAsync(System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, DocumentSriType? documentSriType, DocumentSriStatusType? documentSriStatusType, DocumentSriFilterType? documentSriFilterType, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -16636,7 +16636,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfDocumentSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16659,14 +16659,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<DocumentEmailResponse> SendEmailDocumentAsync(DocumentEmailRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<DocumentEmailResponse>> SendEmailDocumentAsync(DocumentEmailRequest request)
         {
             return SendEmailDocumentAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<DocumentEmailResponse> SendEmailDocumentAsync(DocumentEmailRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<DocumentEmailResponse>> SendEmailDocumentAsync(DocumentEmailRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -16719,7 +16719,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<DocumentEmailResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16742,14 +16742,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<DocumentWhatsAppResponse> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<DocumentWhatsAppResponse>> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request)
         {
             return SendWhatsAppDocumentAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<DocumentWhatsAppResponse> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<DocumentWhatsAppResponse>> SendWhatsAppDocumentAsync(DocumentWhatsAppRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -16802,7 +16802,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<DocumentWhatsAppResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16825,14 +16825,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RucInfoResponse> RucinfoAsync(string ruc)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<RucInfoResponse>> RucinfoAsync(string ruc)
         {
             return RucinfoAsync(ruc, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RucInfoResponse> RucinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<RucInfoResponse>> RucinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -16884,7 +16884,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<RucInfoResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -16907,14 +16907,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EstablecimientoInfoResponse> EstablecimientosinfoAsync(string ruc)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoInfoResponse>> EstablecimientosinfoAsync(string ruc)
         {
             return EstablecimientosinfoAsync(ruc, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EstablecimientoInfoResponse> EstablecimientosinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<EstablecimientoInfoResponse>> EstablecimientosinfoAsync(string ruc, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -16966,7 +16966,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<EstablecimientoInfoResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18090,60 +18090,60 @@ namespace Jiban.Nswag
     public partial interface ITenantClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<string> ClearCacheAsync(string key);
+        System.Threading.Tasks.Task<SwaggerResponse<string>> ClearCacheAsync(string key);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<string> ClearCacheAsync(string key, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<string>> ClearCacheAsync(string key, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SingleLevelTenant>> TenantsAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SingleLevelTenant>> TenantsAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SingleLevelTenant> RoleNamesForTenantsAsync();
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SingleLevelTenant>>> TenantsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SingleLevelTenant> RoleNamesForTenantsAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SingleLevelTenant>>> TenantsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Tenant> CreateAsync(SingleLevelTenant input);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Tenant> CreateAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SingleLevelTenant> SetupForUpdateAsync(int? id);
+        System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> RoleNamesForTenantsAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SingleLevelTenant> SetupForUpdateAsync(int? id, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> RoleNamesForTenantsAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> EditAsync(SingleLevelTenant input);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> EditAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeleteGETAsync(int? id);
+        System.Threading.Tasks.Task<SwaggerResponse<Tenant>> CreateAsync(SingleLevelTenant input);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeleteGETAsync(int? id, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<Tenant>> CreateAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeletePOSTAsync(SingleLevelTenant input);
+        System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> SetupForUpdateAsync(int? id);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CustomStatusGeneric> DeletePOSTAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> SetupForUpdateAsync(int? id, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditAsync(SingleLevelTenant input);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteGETAsync(int? id);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteGETAsync(int? id, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeletePOSTAsync(SingleLevelTenant input);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeletePOSTAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -18196,14 +18196,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<string> ClearCacheAsync(string key)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<string>> ClearCacheAsync(string key)
         {
             return ClearCacheAsync(key, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<string> ClearCacheAsync(string key, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<string>> ClearCacheAsync(string key, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -18256,7 +18256,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<string>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18279,14 +18279,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SingleLevelTenant>> TenantsAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SingleLevelTenant>>> TenantsAsync()
         {
             return TenantsAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SingleLevelTenant>> TenantsAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<System.Collections.Generic.ICollection<SingleLevelTenant>>> TenantsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -18332,7 +18332,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<System.Collections.Generic.ICollection<SingleLevelTenant>>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18355,14 +18355,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SingleLevelTenant> RoleNamesForTenantsAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> RoleNamesForTenantsAsync()
         {
             return RoleNamesForTenantsAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SingleLevelTenant> RoleNamesForTenantsAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> RoleNamesForTenantsAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -18408,7 +18408,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SingleLevelTenant>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18431,14 +18431,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<Tenant> CreateAsync(SingleLevelTenant input)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<Tenant>> CreateAsync(SingleLevelTenant input)
         {
             return CreateAsync(input, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Tenant> CreateAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Tenant>> CreateAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken)
         {
             if (input == null)
                 throw new System.ArgumentNullException("input");
@@ -18491,7 +18491,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<Tenant>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18514,14 +18514,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<SingleLevelTenant> SetupForUpdateAsync(int? id)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> SetupForUpdateAsync(int? id)
         {
             return SetupForUpdateAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SingleLevelTenant> SetupForUpdateAsync(int? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<SingleLevelTenant>> SetupForUpdateAsync(int? id, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -18573,7 +18573,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<SingleLevelTenant>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18596,14 +18596,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> EditAsync(SingleLevelTenant input)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditAsync(SingleLevelTenant input)
         {
             return EditAsync(input, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> EditAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> EditAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken)
         {
             if (input == null)
                 throw new System.ArgumentNullException("input");
@@ -18656,7 +18656,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18679,14 +18679,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> DeleteGETAsync(int? id)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteGETAsync(int? id)
         {
             return DeleteGETAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> DeleteGETAsync(int? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeleteGETAsync(int? id, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -18738,7 +18738,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18761,14 +18761,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CustomStatusGeneric> DeletePOSTAsync(SingleLevelTenant input)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeletePOSTAsync(SingleLevelTenant input)
         {
             return DeletePOSTAsync(input, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CustomStatusGeneric> DeletePOSTAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CustomStatusGeneric>> DeletePOSTAsync(SingleLevelTenant input, System.Threading.CancellationToken cancellationToken)
         {
             if (input == null)
                 throw new System.ArgumentNullException("input");
@@ -18821,7 +18821,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CustomStatusGeneric>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -18976,18 +18976,18 @@ namespace Jiban.Nswag
     public partial interface ITransactionClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfTransactionDto> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfTransactionDto>> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfTransactionDto> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfTransactionDto>> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CreditCreateResponse> DepositCreateAsync(CreditCreateRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<CreditCreateResponse>> DepositCreateAsync(CreditCreateRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CreditCreateResponse> DepositCreateAsync(CreditCreateRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<CreditCreateResponse>> DepositCreateAsync(CreditCreateRequest request, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -19040,14 +19040,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfTransactionDto> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfTransactionDto>> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
         {
             return TransactionsAsync(fromAccountId, startDate, endDate, sortDirectionType, currentPage, pageSize, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfTransactionDto> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfTransactionDto>> TransactionsAsync(System.Guid? fromAccountId, System.DateTimeOffset? startDate, System.DateTimeOffset? endDate, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -19119,7 +19119,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfTransactionDto>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -19142,14 +19142,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<CreditCreateResponse> DepositCreateAsync(CreditCreateRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<CreditCreateResponse>> DepositCreateAsync(CreditCreateRequest request)
         {
             return DepositCreateAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CreditCreateResponse> DepositCreateAsync(CreditCreateRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<CreditCreateResponse>> DepositCreateAsync(CreditCreateRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -19202,7 +19202,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<CreditCreateResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -19357,78 +19357,78 @@ namespace Jiban.Nswag
     public partial interface IUserClient
     {
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserResponse> CreateUserAsync(CreateUsersInformationsRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<UserResponse>> CreateUserAsync(CreateUsersInformationsRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserResponse> CreateUserAsync(CreateUsersInformationsRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<UserResponse>> CreateUserAsync(CreateUsersInformationsRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EditUserResponse> EditAsync(EditUserRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<EditUserResponse>> EditAsync(EditUserRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<EditUserResponse> EditAsync(EditUserRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<EditUserResponse>> EditAsync(EditUserRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns all users in the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfUserSearchResponse> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfUserSearchResponse>> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Returns all users in the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PaginatedListOfUserSearchResponse> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfUserSearchResponse>> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken);
 
         /// <summary>
         /// Get one user by id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GetUserByTokenResponse> GetUserAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get one user by id from the database
-        /// </summary>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GetUserByTokenResponse> GetUserAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <summary>
-        /// Get one user by id from the database
-        /// </summary>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GetUserByIdResponse> GetUser2Async(System.Guid? userId);
+        System.Threading.Tasks.Task<SwaggerResponse<GetUserByTokenResponse>> GetUserAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
         /// Get one user by id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GetUserByIdResponse> GetUser2Async(System.Guid? userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<GetUserByTokenResponse>> GetUserAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Get one user by id from the database
+        /// </summary>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GetUserByIdResponse>> GetUser2Async(System.Guid? userId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Get one user by id from the database
+        /// </summary>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<GetUserByIdResponse>> GetUser2Async(System.Guid? userId, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AvailableUserEmailResponse> AvailableEmailAsync(AvailableUserEmailRequest request);
+        System.Threading.Tasks.Task<SwaggerResponse<AvailableUserEmailResponse>> AvailableEmailAsync(AvailableUserEmailRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AvailableUserEmailResponse> AvailableEmailAsync(AvailableUserEmailRequest request, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AvailableUserEmailResponse>> AvailableEmailAsync(AvailableUserEmailRequest request, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AvailableUserNdocumentResponse> AvailableDocumentAsync(AvailableUserNdocumentRequest request);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AvailableUserNdocumentResponse> AvailableDocumentAsync(AvailableUserNdocumentRequest request, System.Threading.CancellationToken cancellationToken);
-
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<bool> DeleteUserAsync(System.Guid? id);
+        System.Threading.Tasks.Task<SwaggerResponse<AvailableUserNdocumentResponse>> AvailableDocumentAsync(AvailableUserNdocumentRequest request);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<bool> DeleteUserAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<SwaggerResponse<AvailableUserNdocumentResponse>> AvailableDocumentAsync(AvailableUserNdocumentRequest request, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<bool>> DeleteUserAsync(System.Guid? id);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<SwaggerResponse<bool>> DeleteUserAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> ReportAsync(bool? accessAll, bool? userAll);
@@ -19488,14 +19488,14 @@ namespace Jiban.Nswag
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<UserResponse> CreateUserAsync(CreateUsersInformationsRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<UserResponse>> CreateUserAsync(CreateUsersInformationsRequest request)
         {
             return CreateUserAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<UserResponse> CreateUserAsync(CreateUsersInformationsRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<UserResponse>> CreateUserAsync(CreateUsersInformationsRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -19548,7 +19548,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<UserResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 201)
@@ -19558,7 +19558,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<UserResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -19581,14 +19581,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EditUserResponse> EditAsync(EditUserRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<EditUserResponse>> EditAsync(EditUserRequest request)
         {
             return EditAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EditUserResponse> EditAsync(EditUserRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<EditUserResponse>> EditAsync(EditUserRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -19641,7 +19641,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<EditUserResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -19667,7 +19667,7 @@ namespace Jiban.Nswag
         /// Returns all users in the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedListOfUserSearchResponse> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfUserSearchResponse>> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize)
         {
             return GetUsersAsync(accessAll, userAll, filter, search, sortDirectionType, currentPage, pageSize, System.Threading.CancellationToken.None);
         }
@@ -19677,7 +19677,7 @@ namespace Jiban.Nswag
         /// Returns all users in the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedListOfUserSearchResponse> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<PaginatedListOfUserSearchResponse>> GetUsersAsync(bool? accessAll, bool? userAll, OwnerFilterType? filter, string search, SortDirectionType? sortDirectionType, int? currentPage, int? pageSize, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -19753,7 +19753,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<PaginatedListOfUserSearchResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -19779,7 +19779,7 @@ namespace Jiban.Nswag
         /// Get one user by id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetUserByTokenResponse> GetUserAsync()
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<GetUserByTokenResponse>> GetUserAsync()
         {
             return GetUserAsync(System.Threading.CancellationToken.None);
         }
@@ -19789,7 +19789,7 @@ namespace Jiban.Nswag
         /// Get one user by id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetUserByTokenResponse> GetUserAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<GetUserByTokenResponse>> GetUserAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -19835,7 +19835,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<GetUserByTokenResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -19861,7 +19861,7 @@ namespace Jiban.Nswag
         /// Get one user by id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetUserByIdResponse> GetUser2Async(System.Guid? userId)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<GetUserByIdResponse>> GetUser2Async(System.Guid? userId)
         {
             return GetUser2Async(userId, System.Threading.CancellationToken.None);
         }
@@ -19871,7 +19871,7 @@ namespace Jiban.Nswag
         /// Get one user by id from the database
         /// </summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetUserByIdResponse> GetUser2Async(System.Guid? userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<GetUserByIdResponse>> GetUser2Async(System.Guid? userId, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -19923,7 +19923,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<GetUserByIdResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         if (status_ == 404)
@@ -19956,14 +19956,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AvailableUserEmailResponse> AvailableEmailAsync(AvailableUserEmailRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AvailableUserEmailResponse>> AvailableEmailAsync(AvailableUserEmailRequest request)
         {
             return AvailableEmailAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AvailableUserEmailResponse> AvailableEmailAsync(AvailableUserEmailRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AvailableUserEmailResponse>> AvailableEmailAsync(AvailableUserEmailRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -20016,7 +20016,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AvailableUserEmailResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -20039,14 +20039,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AvailableUserNdocumentResponse> AvailableDocumentAsync(AvailableUserNdocumentRequest request)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<AvailableUserNdocumentResponse>> AvailableDocumentAsync(AvailableUserNdocumentRequest request)
         {
             return AvailableDocumentAsync(request, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AvailableUserNdocumentResponse> AvailableDocumentAsync(AvailableUserNdocumentRequest request, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<AvailableUserNdocumentResponse>> AvailableDocumentAsync(AvailableUserNdocumentRequest request, System.Threading.CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new System.ArgumentNullException("request");
@@ -20099,7 +20099,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<AvailableUserNdocumentResponse>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -20122,14 +20122,14 @@ namespace Jiban.Nswag
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<bool> DeleteUserAsync(System.Guid? id)
+        public virtual System.Threading.Tasks.Task<SwaggerResponse<bool>> DeleteUserAsync(System.Guid? id)
         {
             return DeleteUserAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<bool> DeleteUserAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<SwaggerResponse<bool>> DeleteUserAsync(System.Guid? id, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -20181,7 +20181,7 @@ namespace Jiban.Nswag
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return objectResponse_.Object;
+                            return new SwaggerResponse<bool>(status_, headers_, objectResponse_.Object);
                         }
                         else
                         {
@@ -27431,6 +27431,32 @@ namespace Jiban.Nswag
                 _response.Dispose();
             if (_client != null)
                 _client.Dispose();
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class SwaggerResponse
+    {
+        public int StatusCode { get; private set; }
+
+        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
+
+        public SwaggerResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers)
+        {
+            StatusCode = statusCode;
+            Headers = headers;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class SwaggerResponse<TResult> : SwaggerResponse
+    {
+        public TResult Result { get; private set; }
+
+        public SwaggerResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result)
+            : base(statusCode, headers)
+        {
+            Result = result;
         }
     }
 

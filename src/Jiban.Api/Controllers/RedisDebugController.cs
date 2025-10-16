@@ -1,7 +1,8 @@
 using Jiban.BaseCode.PermissionsCode;
+using Jiban.Infrastructure;
+using Jiban.Nswag;
 using JibanPermissions.Services;
 using Microsoft.AspNetCore.Mvc;
-using Jiban.Infrastructure;
 
 namespace Jiban.Api.Controllers
 {
@@ -442,7 +443,7 @@ namespace Jiban.Api.Controllers
                 try
                 {
                     // Intentar deserializar
-                    var eventModel = _eventService.GetMessage<Domain.Models.EventAuthorizeDocumentModel>(message);
+                    var eventModel = _eventService.GetMessage<DocumentEmailRequest>(message);
                     
                     return Ok(new
                     {
@@ -450,10 +451,10 @@ namespace Jiban.Api.Controllers
                         DeserializationSuccess = true,
                         EventModel = new
                         {
-                            eventModel.IdSolicitud,
-                            eventModel.IdSolicitudDetalle,
-                            eventModel.IdTipoSolicitud,
-                            eventModel.Identificacion
+                            //eventModel.IdSolicitud,
+                            //eventModel.IdSolicitudDetalle,
+                            //eventModel.IdTipoSolicitud,
+                            //eventModel.Identificacion
                         }
                     });
                 }
