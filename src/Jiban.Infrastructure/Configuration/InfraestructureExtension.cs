@@ -48,4 +48,4 @@ namespace Jiban.Infrastructure.Configuration
             return services;
         }
     }
-}
+} 
