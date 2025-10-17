@@ -1,41 +1,38 @@
-using Jiban.Infrastructure.Configuration;
+using Jiban.Domain;
 using Jiban.AspNetCore;
+using Jiban.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// VERIFICACIÓN TEMPORAL
+// Optional: show some config values
 Console.WriteLine($"Entorno actual: {builder.Environment.EnvironmentName}");
-Console.WriteLine($"Redis Hostname: {builder.Configuration["Redis:Hostname"]}");
-Console.WriteLine($"Redis Password: {builder.Configuration["Redis:Password"]}");
 
+// Ensure IHttpContextAccessor is available (GetDataKeyFromUserNormal needs it)
+builder.Services.AddHttpContextAccessor();
+
+// expose webHostBuilder for APIs expecting it
+var webHostBuilder = builder.WebHost;
+
+var setup = builder.Services.MultiTenant<DefaultPermissions>(webHostBuilder, builder.Configuration);
+builder.Services.AddJibanJwtServices(setup.Options);
 builder.Services.AddJibanRedis(builder.Configuration);
+builder.Services.AddJibanAwsServices(builder.Configuration);
+
 builder.Services.AddJibanHostedServices(builder.Configuration);
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddControllers();
-
-// Usar OpenAPI nativo de .NET 10 en lugar de Swashbuckle
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-// Swagger UI disponible en Development
+// pipeline...
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/openapi/v1.json", "Jiban API v1");
-    });
-    
-    // Mostrar la URL de Swagger en la consola
-    Console.WriteLine("?? Swagger UI disponible en: https://localhost:56982/swagger");
+    app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "Jiban API v1"));
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

@@ -431,32 +431,25 @@ namespace Jiban.Infrastructure.HostedServices
         /// <summary>
         /// Procesar el evento que se recibe de la cola Redis
         /// </summary>
-        /// <param name="eventAuthorizeDocument">Modelo con información de la solicitud a procesar</param>
-        private async Task ProcesarEvento(DocumentEmailRequest eventAuthorizeDocument)
+        /// <param name="documentEmailRequest">Modelo con información de la solicitud a procesar</param>
+        private async Task ProcesarEvento(DocumentEmailRequest documentEmailRequest)
         {
             try
             {
-                string identificacionSolicitud = eventAuthorizeDocument.Email.ToString();
-                string identificacion = eventAuthorizeDocument.SriDocumentId.ToString();
 
-                _logger.LogInformation("{ProcessingEmoji} Procesando evento - IdSolicitudDetalle: {IdSolicitudDetalle}, Identificacion: {Identificacion}", 
-                    JibanConstants.PROCESSING_EMOJI, identificacionSolicitud, identificacion);
+                _logger.LogInformation("{ProcessingEmoji} Procesando evento - Autorizar Documento", 
+                    JibanConstants.PROCESSING_EMOJI);
 
                 // PROCESAMIENTO REAL DEL EVENTO
-                _logger.LogInformation("📄 Iniciando procesamiento de documentos electrónicos para: {Identificacion}", identificacion);
+                _logger.LogInformation("📄 Iniciando procesamiento de documentos electrónicos para: {Identificacion}", documentEmailRequest.Email);
                 
                 var tokenAndRefreshToken = await _tokenBuilder.GenerateTokenAndRefreshTokenAsync(Guid.NewGuid());
                 _tokenAccessor.SetToken(tokenAndRefreshToken.Token);
-                // Usar el servicio de documentos electrónicos
-                //await _electronicDocService.ProcessElectronicDocumentsAsync(identificacion, CancellationToken.None);
+                await SendEmailDocumentsAsync(documentEmailRequest);
+                _tokenAccessor.ClearToken();
 
-                // Aquí puedes agregar tu lógica de negocio específica:
-                // await ProcesarSolicitudCheques(eventAuthorizeDocument);
-                // await ProcesarGeneracionDocumentacion(eventAuthorizeDocument);
-                // await ProcesarActualizacionUsuarioFinal(eventAuthorizeDocument);
-
-                _logger.LogInformation("{SuccessEmoji} Evento procesado exitosamente para IdSolicitudDetalle: {IdSolicitudDetalle}", 
-                    JibanConstants.SUCCESS_EMOJI, identificacionSolicitud);
+                _logger.LogInformation("{SuccessEmoji} Evento procesado exitosamente - Autorizar Documento", 
+                    JibanConstants.SUCCESS_EMOJI);
             }
             catch (Exception excepcion)
             {
