@@ -27,7 +27,15 @@ namespace Jiban.Infrastructure.Configuration
             services.AddScoped<ISriClient, SriClient>();
             services.AddSingleton<ITokenAccessor, RuntimeTokenAccessor>();
             services.AddTransient<DynamicJwtHandler>();
-            services.AddHttpClient<NswagConfiguration>()
+
+            var baseUrl = configuration[JibanConstants.NswagBaseUrl];
+            if (string.IsNullOrWhiteSpace(baseUrl))
+                throw new InvalidOperationException("Missing env var: NswagBaseUrl");
+
+            services.AddHttpClient<NswagConfiguration>(client =>
+            {
+                client.BaseAddress = new Uri(baseUrl);
+            })
             .AddHttpMessageHandler<DynamicJwtHandler>()
             .AddPolicyHandler(GetRetryPolicy())
             .AddPolicyHandler(GetCircuitBreakerPolicy())
