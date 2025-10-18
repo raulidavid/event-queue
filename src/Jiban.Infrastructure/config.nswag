@@ -10,8 +10,8 @@
   },
   "codeGenerators": {
     "openApiToCSharpClient": {
-      "clientBaseClass": "NswagBase",
-      "configurationClass": "NswagConfiguration",
+      "clientBaseClass": null,
+      "configurationClass": null,
       "generateClientClasses": true,
       "suppressClientClassesOutput": false,
       "generateClientInterfaces": true,
