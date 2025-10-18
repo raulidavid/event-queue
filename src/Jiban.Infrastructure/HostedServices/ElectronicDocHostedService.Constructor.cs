@@ -43,6 +43,7 @@ namespace Jiban.Infrastructure.HostedServices
         private readonly ILogger<ElectronicDocHostedService> _logger;
         private readonly IElectronicDocService _electronicDocService;
         private readonly ITokenAccessor _tokenAccessor;
+        private readonly ITokenBuilder _tokenBuilder;
         private readonly IConfiguration _configuration;
         private readonly IEventService _eventService;
         
@@ -53,6 +54,7 @@ namespace Jiban.Infrastructure.HostedServices
             _eventService = _serviceScope.ServiceProvider.GetRequiredService<IEventService>();
             _electronicDocService = _serviceScope.ServiceProvider.GetRequiredService<IElectronicDocService>();
             _tokenAccessor = _serviceScope.ServiceProvider.GetRequiredService<ITokenAccessor>();
+            _tokenBuilder = _serviceScope.ServiceProvider.GetRequiredService<ITokenBuilder>();
             _configuration = _serviceScope.ServiceProvider.GetRequiredService<IConfiguration>();
         }
     }

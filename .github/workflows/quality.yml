@@ -1,0 +1,121 @@
+name: JIBAN EVENT QUALITY
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Who to greet"
+        default: "World"
+  push:
+    paths-ignore:
+      - '**.md'
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_CORE_VERSION: 10.0.x
+      PORTHTTPS: "44361"
+      TZ: America/Guayaquil
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+    outputs:
+      image-tag: ${{ steps.generate-tag.outputs.image-tag }}
+    steps:
+      - name: Set up .NET Core SDK
+        uses: actions/setup-dotnet@v5.0.0
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Check out code
+        uses: actions/checkout@v5.0.0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.11.1
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: raulidavid
+          password: ${{ secrets.JIBANTOKEN }}
+
+      - name: Generate IMAGE_TAG
+        id: generate-tag
+        run: |
+          IMAGE_TAG="ghcr.io/raulidavid/jiban-event:quality-v$(date +%Y.%m.%d)-${{ github.run_number }}"
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+          echo "image-tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+          echo "Generated tag: $IMAGE_TAG"
+
+      - name: Rename .nuget.config to nuget.config
+        run: mv .nuget.config nuget.config
+
+      - name: Configure NuGet
+        run: |
+          echo "Configuring NuGet..."
+          sed -i 's|\${NUGET_TOKEN}|'"${{ secrets.NUGET_TOKEN }}"'|g' nuget.config
+
+      - name: Build and Push Api Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: src/Jiban.Api/Dockerfile.production
+          push: true
+          tags: ${{ env.IMAGE_TAG }}
+          build-args: |
+            NUGET_TOKEN=${{ env.NUGET_TOKEN }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64
+      
+      - name: Send Email via Amazon SES
+        if: success()
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: email-smtp.us-east-1.amazonaws.com
+          server_port: 465
+          username: ${{ secrets.SES_USER }}
+          password: ${{ secrets.SES_PASS }}
+          subject: "✅ QUALITY - Nueva imagen generada: ${{ env.IMAGE_TAG }}"
+          body: |
+            🚀 **BUILD EXITOSO - QUALITY**
+            
+            La imagen Docker ha sido creada y subida exitosamente.
+            
+            📌 **Tag:** `${{ env.IMAGE_TAG }}`
+            📊 **Branch:** `${{ github.ref_name }}`
+            📝 **Commit:** `${{ github.sha }}`
+            👤 **Actor:** `${{ github.actor }}`
+            🔗 **Workflow:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            ---
+            *Generado automáticamente por GitHub Actions*
+          to: "raul.flores@jiban.ec"
+          from: "GitHub Actions Quality <crm@jiban.ec>"
+
+      - name: Send Error Email via Amazon SES
+        if: failure()
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: email-smtp.us-east-1.amazonaws.com
+          server_port: 465
+          username: ${{ secrets.SES_USER }}
+          password: ${{ secrets.SES_PASS }}
+          subject: "❌ QUALITY - Error en build: ${{ github.ref_name }}"
+          body: |
+            💥 **BUILD FALLÓ - QUALITY**
+            
+            Ha ocurrido un error durante el proceso de build.
+            
+            📊 **Branch:** `${{ github.ref_name }}`
+            📝 **Commit:** `${{ github.sha }}`
+            👤 **Actor:** `${{ github.actor }}`
+            🔗 **Ver detalles:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            Por favor revisa los logs para más detalles.
+            
+            ---
+            *Generado automáticamente por GitHub Actions*
+          to: "raul.flores@jiban.ec"
+          from: "GitHub Actions Quality <crm@jiban.ec>"

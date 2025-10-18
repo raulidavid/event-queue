@@ -1,0 +1,54 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS base
+
+# Initialize build arguments
+ARG PORTHTTPS
+ARG JIBANKEYVAULTURL
+ARG DOCKERFILE_PATH
+
+# Display initialized test arguments
+RUN echo "PORTHTTPS: ${PORTHTTPS}" && \
+    echo "JIBANKEYVAULTURL: ${JIBANKEYVAULTURL}"
+
+# Set environment variables
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
+    TZ=America/Guayaquil \
+    PATH="$PATH:/root/.dotnet/tools"
+
+# Expose the HTTPS port
+EXPOSE ${PORTHTTPS}
+
+# Use bash as the default shell
+RUN ln -sf /bin/bash /bin/sh
+
+# Create directory for secrets store
+RUN mkdir /mnt/secrets-store
+
+# Install dotnet-ef tool globally
+RUN dotnet tool install --global dotnet-ef
+
+# Set the working directory
+WORKDIR /src
+
+# Copy all files to the working directory
+COPY . .
+
+# Update package lists and install required packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    tzdata \
+    curl \
+    iputils-ping \
+    telnet \
+    vim \
+    wget \
+    git \
+    libfontconfig1 \
+    fontforge \
+    cabextract \
+    apt-utils \
+    libgdiplus \
+    libc6-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+# Keep the container running
+ENTRYPOINT ["tail", "-f", "/dev/null"]

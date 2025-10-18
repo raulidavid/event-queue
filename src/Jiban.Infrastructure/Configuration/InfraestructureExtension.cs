@@ -5,6 +5,8 @@ using Jiban.BaseCode.PermissionsCode;
 using Jiban.Infrastructure.Services;
 using Polly.Extensions.Http;
 using Polly;
+using Jiban.Nswag;
+using JibanPermissions.Services;
 
 namespace Jiban.Infrastructure.Configuration
 {
@@ -22,7 +24,9 @@ namespace Jiban.Infrastructure.Configuration
 
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            
             services.AddScoped<IElectronicDocService, ElectronicDocService>();
+            services.AddScoped<ISriClient, SriClient>();
             services.AddSingleton<ITokenAccessor, RuntimeTokenAccessor>();
             services.AddTransient<DynamicJwtHandler>();
 
