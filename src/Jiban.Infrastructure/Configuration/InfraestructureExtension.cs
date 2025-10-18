@@ -23,16 +23,10 @@ namespace Jiban.Infrastructure.Configuration
 
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IElectronicDocService, ElectronicDocService>();
-            services.AddScoped<ISriClient, SriClient>();
-            services.AddSingleton<ITokenAccessor, RuntimeTokenAccessor>();
-            services.AddTransient<DynamicJwtHandler>();
-
             var baseUrl = configuration[JibanConstants.NswagBaseUrl];
             if (string.IsNullOrWhiteSpace(baseUrl))
                 throw new InvalidOperationException("Missing env var: NswagBaseUrl");
-
-            services.AddHttpClient<NswagConfiguration>(client =>
+            services.AddHttpClient(string.Empty, client =>
             {
                 client.BaseAddress = new Uri(baseUrl);
             })
@@ -44,7 +38,10 @@ namespace Jiban.Infrastructure.Configuration
             {
                 ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
             });
-
+            services.AddScoped<IElectronicDocService, ElectronicDocService>();
+            services.AddScoped<ISriClient, SriClient>();
+            services.AddSingleton<ITokenAccessor, RuntimeTokenAccessor>();
+            services.AddTransient<DynamicJwtHandler>();
             return services;
         }
 
