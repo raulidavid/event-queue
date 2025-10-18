@@ -1,8 +1,7 @@
 ﻿using Jiban.BaseCode.PermissionsCode;
-using Jiban.Nswag;
-using JibanPermissions.Services;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
+using Jiban.Nswag;
 
 namespace Jiban.Infrastructure.HostedServices
 {
@@ -442,8 +441,8 @@ namespace Jiban.Infrastructure.HostedServices
 
                 // PROCESAMIENTO REAL DEL EVENTO
                 _logger.LogInformation("📄 Iniciando procesamiento de documentos electrónicos para: {Identificacion}", documentEmailRequest.Email);
-                
-                var tokenAndRefreshToken = await _tokenBuilder.GenerateTokenAndRefreshTokenAsync(Guid.NewGuid());
+                documentEmailRequest.ProcessingType = ProcessingType.Direct;
+                var tokenAndRefreshToken = await _tokenBuilder.GenerateTokenAndRefreshTokenAsync(documentEmailRequest.UserId);
                 _tokenAccessor.SetToken(tokenAndRefreshToken.Token);
                 await SendEmailDocumentsAsync(documentEmailRequest);
                 _tokenAccessor.ClearToken();

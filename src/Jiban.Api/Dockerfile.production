@@ -1,0 +1,88 @@
+# Stage 1: Base Runtime Image (Standard Microsoft Debian-based)
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
+
+# Initialize environment variables
+ARG PORTHTTPS
+ARG JIBANKEYVAULTURL
+ARG DOCKERFILE_PATH
+
+ENV PORTHTTPS=${PORTHTTPS} \
+    JIBANKEYVAULTURL=${JIBANKEYVAULTURL} \
+    DOCKERFILE_PATH=${DOCKERFILE_PATH} \
+    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
+    DOTNET_RUNNING_IN_CONTAINER=true \
+    DOTNET_USE_POLLING_FILE_WATCHER=true \
+    TZ=America/Guayaquil
+
+# Use bash shell for consistency
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Install runtime dependencies with cleanup
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tzdata \
+    curl \
+    iputils-ping \
+    telnet \
+    libfontconfig1 \
+    fontforge \
+    cabextract \
+    apt-utils \
+    libgdiplus \
+    libc6-dev \
+    fonts-liberation \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+WORKDIR /app
+EXPOSE ${PORTHTTPS}
+
+# Stage 2: Build Dependencies (Better caching)
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS restore
+
+# Use bash shell
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+WORKDIR /src
+
+# Copy all source code at once
+COPY . .
+
+# Restore dependencies
+RUN dotnet restore "src/Jiban.Api/Jiban.Api.csproj" \
+    --verbosity normal
+
+# Stage 3: Build Application
+FROM restore AS build
+
+WORKDIR "/src/src/Jiban.Api"
+
+# Build with optimizations for your .NET 9 API
+RUN dotnet build "Jiban.Api.csproj" \
+    --configuration Release \
+    --no-restore \
+    --verbosity minimal \
+    --nologo
+
+# Stage 4: Publish Application
+FROM build AS publish
+
+# Publish with optimizations for production
+RUN dotnet publish "Jiban.Api.csproj" \
+    --configuration Release \
+    --no-build \
+    --output /app/publish \
+    --self-contained false \
+    --verbosity minimal \
+    --nologo \
+    /p:PublishReadyToRun=false \
+    /p:PublishSingleFile=false \
+    /p:PublishTrimmed=false
+
+# Stage 5: Final Optimized Image
+FROM base AS final
+
+# Copy published application
+COPY --from=publish /app/publish .
+
+# Use exec form for better signal handling
+ENTRYPOINT ["dotnet", "Jiban.Api.dll"]
