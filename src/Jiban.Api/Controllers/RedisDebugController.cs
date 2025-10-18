@@ -1,6 +1,6 @@
 using Jiban.BaseCode.PermissionsCode;
 using Jiban.Infrastructure;
-using Jiban.Nswag;
+using Jiban.Infrastructure.Nswag;
 using JibanPermissions.Services;
 using Microsoft.AspNetCore.Mvc;
 

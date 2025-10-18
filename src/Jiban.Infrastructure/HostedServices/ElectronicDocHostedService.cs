@@ -1,7 +1,8 @@
-﻿using Jiban.BaseCode.PermissionsCode;
+﻿
+using Jiban.BaseCode.PermissionsCode;
+using Jiban.Infrastructure.Nswag;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
-using Jiban.Nswag;
 
 namespace Jiban.Infrastructure.HostedServices
 {
