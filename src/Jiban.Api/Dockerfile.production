@@ -37,7 +37,7 @@ WORKDIR /app
 EXPOSE ${PORTHTTPS}
 
 # Stage 2: Build Dependencies (Better caching)
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS restore
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS restore
 
 # Use bash shell
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -56,7 +56,7 @@ FROM restore AS build
 
 WORKDIR "/src/src/Jiban.Api"
 
-# Build with optimizations for your .NET 9 API
+# Build with optimizations for your .NET 10 API
 RUN dotnet build "Jiban.Api.csproj" \
     --configuration Release \
     --no-restore \
