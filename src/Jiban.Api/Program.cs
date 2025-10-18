@@ -29,7 +29,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "Jiban API v1"));
+    app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "Jiban Event v1"));
 }
 
 app.UseHttpsRedirection();

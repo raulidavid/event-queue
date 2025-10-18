@@ -1,12 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Jiban.BaseCode.PermissionsCode;
 using Jiban.Infrastructure.HostedServices;
-using Microsoft.Extensions.Configuration;
-using Jiban.BaseCode.PermissionsCode;
+using Jiban.Infrastructure.Nswag;
 using Jiban.Infrastructure.Services;
-using Polly.Extensions.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Polly;
-using Jiban.Nswag;
-using JibanPermissions.Services;
+using Polly.Extensions.Http;
 
 namespace Jiban.Infrastructure.Configuration
 {
@@ -24,20 +23,11 @@ namespace Jiban.Infrastructure.Configuration
 
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            
             services.AddScoped<IElectronicDocService, ElectronicDocService>();
             services.AddScoped<ISriClient, SriClient>();
             services.AddSingleton<ITokenAccessor, RuntimeTokenAccessor>();
             services.AddTransient<DynamicJwtHandler>();
-
-            var baseUrl = configuration["NswagBaseUrl"];
-            if (string.IsNullOrWhiteSpace(baseUrl))
-                throw new InvalidOperationException("Missing env var: NswagBaseUrl");
-
-            services.AddHttpClient(string.Empty, client =>
-            {
-                client.BaseAddress = new Uri(baseUrl);
-            })
+            services.AddHttpClient<NswagConfiguration>()
             .AddHttpMessageHandler<DynamicJwtHandler>()
             .AddPolicyHandler(GetRetryPolicy())
             .AddPolicyHandler(GetCircuitBreakerPolicy())

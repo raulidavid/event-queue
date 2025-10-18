@@ -1,4 +1,4 @@
-﻿using Jiban.Nswag;
+﻿using Jiban.Infrastructure.Nswag;
 
 namespace Jiban.Infrastructure.Services
 {

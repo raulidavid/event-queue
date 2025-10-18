@@ -20,7 +20,7 @@
 #pragma warning disable 8625 // Disable "CS8625 Cannot convert null literal to non-nullable reference type"
 #pragma warning disable 8765 // Disable "CS8765 Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes)."
 
-namespace Jiban.Nswag
+namespace Jiban.Infrastructure.Nswag
 {
     using System = global::System;
 
@@ -37,21 +37,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountClient : IAccountClient
+    public partial class AccountClient : NswagBase, IAccountClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public AccountClient(System.Net.Http.HttpClient httpClient)
+        public AccountClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -61,17 +56,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -111,7 +95,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Account/accounttransfercreate"
                     urlBuilder_.Append("api/Account/accounttransfercreate");
 
@@ -328,21 +312,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AddressClient : IAddressClient
+    public partial class AddressClient : NswagBase, IAddressClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public AddressClient(System.Net.Http.HttpClient httpClient)
+        public AddressClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -352,17 +331,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -401,7 +369,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Address/addressbyid"
                     urlBuilder_.Append("api/Address/addressbyid");
                     urlBuilder_.Append('?');
@@ -489,7 +457,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Address/addressbypersonid"
                     urlBuilder_.Append("api/Address/addressbypersonid");
                     urlBuilder_.Append('?');
@@ -721,21 +689,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AppointmentClient : IAppointmentClient
+    public partial class AppointmentClient : NswagBase, IAppointmentClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public AppointmentClient(System.Net.Http.HttpClient httpClient)
+        public AppointmentClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -745,17 +708,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -795,7 +747,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Appointment/appointments"
                     urlBuilder_.Append("api/Appointment/appointments");
 
@@ -878,7 +830,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Appointment/create"
                     urlBuilder_.Append("api/Appointment/create");
 
@@ -961,7 +913,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Appointment/update"
                     urlBuilder_.Append("api/Appointment/update");
 
@@ -1044,7 +996,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Appointment/delete"
                     urlBuilder_.Append("api/Appointment/delete");
 
@@ -1120,7 +1072,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Appointment/report"
                     urlBuilder_.Append("api/Appointment/report");
                     urlBuilder_.Append('?');
@@ -1379,21 +1331,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ArticleClient : IArticleClient
+    public partial class ArticleClient : NswagBase, IArticleClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public ArticleClient(System.Net.Http.HttpClient httpClient)
+        public ArticleClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -1403,17 +1350,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -1453,7 +1389,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/articles"
                     urlBuilder_.Append("api/Article/articles");
 
@@ -1536,7 +1472,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/available"
                     urlBuilder_.Append("api/Article/available");
 
@@ -1619,7 +1555,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/create"
                     urlBuilder_.Append("api/Article/create");
 
@@ -1695,7 +1631,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/getarticle"
                     urlBuilder_.Append("api/Article/getarticle");
                     urlBuilder_.Append('?');
@@ -1784,7 +1720,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/update"
                     urlBuilder_.Append("api/Article/update");
 
@@ -1873,7 +1809,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/upload"
                     urlBuilder_.Append("api/Article/upload");
 
@@ -1956,7 +1892,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/articlestax"
                     urlBuilder_.Append("api/Article/articlestax");
 
@@ -2032,7 +1968,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Article/report"
                     urlBuilder_.Append("api/Article/report");
                     urlBuilder_.Append('?');
@@ -2337,21 +2273,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AuthenticateClient : IAuthenticateClient
+    public partial class AuthenticateClient : NswagBase, IAuthenticateClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public AuthenticateClient(System.Net.Http.HttpClient httpClient)
+        public AuthenticateClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -2361,17 +2292,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -2417,7 +2337,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/authenticate"
                     urlBuilder_.Append("api/Authenticate/authenticate");
 
@@ -2506,7 +2426,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/refreshauthentication"
                     urlBuilder_.Append("api/Authenticate/refreshauthentication");
 
@@ -2595,7 +2515,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/logout"
                     urlBuilder_.Append("api/Authenticate/logout");
 
@@ -2676,7 +2596,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/forgotpassword"
                     urlBuilder_.Append("api/Authenticate/forgotpassword");
 
@@ -2759,7 +2679,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/resetpassword"
                     urlBuilder_.Append("api/Authenticate/resetpassword");
 
@@ -2842,7 +2762,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/generateinitialconfirmation"
                     urlBuilder_.Append("api/Authenticate/generateinitialconfirmation");
 
@@ -2925,7 +2845,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/generateconfirmation"
                     urlBuilder_.Append("api/Authenticate/generateconfirmation");
 
@@ -3014,7 +2934,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/updateemail"
                     urlBuilder_.Append("api/Authenticate/updateemail");
 
@@ -3088,7 +3008,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/loggedin"
                     urlBuilder_.Append("api/Authenticate/loggedin");
 
@@ -3176,7 +3096,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authenticate/getuserpermissions"
                     urlBuilder_.Append("api/Authenticate/getuserpermissions");
 
@@ -3458,21 +3378,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AuthpClient : IAuthpClient
+    public partial class AuthpClient : NswagBase, IAuthpClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public AuthpClient(System.Net.Http.HttpClient httpClient)
+        public AuthpClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -3482,17 +3397,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -3525,7 +3429,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp"
                     urlBuilder_.Append("api/Authp");
                     urlBuilder_.Append('?');
@@ -3612,7 +3516,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/edit-roles"
                     urlBuilder_.Append("api/Authp/edit-roles");
 
@@ -3686,7 +3590,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/rolenamesforuser"
                     urlBuilder_.Append("api/Authp/rolenamesforuser");
 
@@ -3769,7 +3673,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/invite-user"
                     urlBuilder_.Append("api/Authp/invite-user");
 
@@ -3845,7 +3749,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/verifyInvitation"
                     urlBuilder_.Append("api/Authp/verifyInvitation");
                     urlBuilder_.Append('?');
@@ -3927,7 +3831,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/confirmInvitation"
                     urlBuilder_.Append("api/Authp/confirmInvitation");
                     urlBuilder_.Append('?');
@@ -4013,7 +3917,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/authusers"
                     urlBuilder_.Append("api/Authp/authusers");
 
@@ -4089,7 +3993,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/edit"
                     urlBuilder_.Append("api/Authp/edit");
                     urlBuilder_.Append('?');
@@ -4178,7 +4082,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/edit"
                     urlBuilder_.Append("api/Authp/edit");
 
@@ -4254,7 +4158,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/authuserssync"
                     urlBuilder_.Append("api/Authp/authuserssync");
 
@@ -4337,7 +4241,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/authuserssync"
                     urlBuilder_.Append("api/Authp/authuserssync");
 
@@ -4413,7 +4317,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/delete"
                     urlBuilder_.Append("api/Authp/delete");
                     urlBuilder_.Append('?');
@@ -4502,7 +4406,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Authp/changetenant"
                     urlBuilder_.Append("api/Authp/changetenant");
 
@@ -4762,21 +4666,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class CustomerClient : ICustomerClient
+    public partial class CustomerClient : NswagBase, ICustomerClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public CustomerClient(System.Net.Http.HttpClient httpClient)
+        public CustomerClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -4786,17 +4685,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -4844,7 +4732,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Customer/create"
                     urlBuilder_.Append("api/Customer/create");
 
@@ -4935,7 +4823,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Customer/update"
                     urlBuilder_.Append("api/Customer/update");
 
@@ -5017,7 +4905,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Customer/customerbyid"
                     urlBuilder_.Append("api/Customer/customerbyid");
                     urlBuilder_.Append('?');
@@ -5105,7 +4993,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Customer/customersearch"
                     urlBuilder_.Append("api/Customer/customersearch");
                     urlBuilder_.Append('?');
@@ -5217,7 +5105,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Customer/report"
                     urlBuilder_.Append("api/Customer/report");
                     urlBuilder_.Append('?');
@@ -5507,21 +5395,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DashboardClient : IDashboardClient
+    public partial class DashboardClient : NswagBase, IDashboardClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public DashboardClient(System.Net.Http.HttpClient httpClient)
+        public DashboardClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -5531,17 +5414,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -5580,7 +5452,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Dashboard/widgetorderitemswinning"
                     urlBuilder_.Append("api/Dashboard/widgetorderitemswinning");
                     urlBuilder_.Append('?');
@@ -5684,7 +5556,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Dashboard/widgetbalance"
                     urlBuilder_.Append("api/Dashboard/widgetbalance");
                     urlBuilder_.Append('?');
@@ -5788,7 +5660,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Dashboard/widgettransactions"
                     urlBuilder_.Append("api/Dashboard/widgettransactions");
                     urlBuilder_.Append('?');
@@ -5892,7 +5764,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Dashboard/widgetbusinessadvisorwinning"
                     urlBuilder_.Append("api/Dashboard/widgetbusinessadvisorwinning");
                     urlBuilder_.Append('?');
@@ -5996,7 +5868,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Dashboard/widgetordersdepositsyearly"
                     urlBuilder_.Append("api/Dashboard/widgetordersdepositsyearly");
                     urlBuilder_.Append('?');
@@ -6100,7 +5972,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Dashboard/getwidgetordersmonthly"
                     urlBuilder_.Append("api/Dashboard/getwidgetordersmonthly");
                     urlBuilder_.Append('?');
@@ -6204,7 +6076,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Dashboard/getwidgetclientsmonthly"
                     urlBuilder_.Append("api/Dashboard/getwidgetclientsmonthly");
                     urlBuilder_.Append('?');
@@ -6424,21 +6296,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DefaultClient : IDefaultClient
+    public partial class DefaultClient : NswagBase, IDefaultClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public DefaultClient(System.Net.Http.HttpClient httpClient)
+        public DefaultClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -6448,17 +6315,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -6491,7 +6347,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: ""
 
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -6700,21 +6556,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GeographicLocationClient : IGeographicLocationClient
+    public partial class GeographicLocationClient : NswagBase, IGeographicLocationClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public GeographicLocationClient(System.Net.Http.HttpClient httpClient)
+        public GeographicLocationClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -6724,17 +6575,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -6767,7 +6607,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/GeographicLocation/provincias"
                     urlBuilder_.Append("api/GeographicLocation/provincias");
 
@@ -6843,7 +6683,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/GeographicLocation/cantones"
                     urlBuilder_.Append("api/GeographicLocation/cantones");
                     urlBuilder_.Append('?');
@@ -6925,7 +6765,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/GeographicLocation/parroquias"
                     urlBuilder_.Append("api/GeographicLocation/parroquias");
                     urlBuilder_.Append('?');
@@ -7164,21 +7004,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class IncomeClient : IIncomeClient
+    public partial class IncomeClient : NswagBase, IIncomeClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public IncomeClient(System.Net.Http.HttpClient httpClient)
+        public IncomeClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -7188,17 +7023,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -7231,7 +7055,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Income/getdeposits"
                     urlBuilder_.Append("api/Income/getdeposits");
                     urlBuilder_.Append('?');
@@ -7345,7 +7169,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Income/getdepositbyid"
                     urlBuilder_.Append("api/Income/getdepositbyid");
                     urlBuilder_.Append('?');
@@ -7434,7 +7258,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Income/create"
                     urlBuilder_.Append("api/Income/create");
 
@@ -7517,7 +7341,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Income/update"
                     urlBuilder_.Append("api/Income/update");
 
@@ -7600,7 +7424,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Income/delete"
                     urlBuilder_.Append("api/Income/delete");
 
@@ -7676,7 +7500,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Income/report"
                     urlBuilder_.Append("api/Income/report");
                     urlBuilder_.Append('?');
@@ -7896,21 +7720,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class InvoiceClient : IInvoiceClient
+    public partial class InvoiceClient : NswagBase, IInvoiceClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public InvoiceClient(System.Net.Http.HttpClient httpClient)
+        public InvoiceClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -7920,17 +7739,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -7970,7 +7778,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Invoice/invoicecreate"
                     urlBuilder_.Append("api/Invoice/invoicecreate");
 
@@ -8046,7 +7854,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Invoice/invoicebyid"
                     urlBuilder_.Append("api/Invoice/invoicebyid");
                     urlBuilder_.Append('?');
@@ -8128,7 +7936,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Invoice/invoicepdf"
                     urlBuilder_.Append("api/Invoice/invoicepdf");
                     urlBuilder_.Append('?');
@@ -8374,21 +8182,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OrderClient : IOrderClient
+    public partial class OrderClient : NswagBase, IOrderClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public OrderClient(System.Net.Http.HttpClient httpClient)
+        public OrderClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -8398,17 +8201,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -8441,7 +8233,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Order/ordersearch"
                     urlBuilder_.Append("api/Order/ordersearch");
                     urlBuilder_.Append('?');
@@ -8551,7 +8343,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Order/orderbyid"
                     urlBuilder_.Append("api/Order/orderbyid");
                     urlBuilder_.Append('?');
@@ -8633,7 +8425,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Order/orderbynumber"
                     urlBuilder_.Append("api/Order/orderbynumber");
                     urlBuilder_.Append('?');
@@ -8722,7 +8514,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Order/create"
                     urlBuilder_.Append("api/Order/create");
 
@@ -8799,7 +8591,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Order/activate"
                     urlBuilder_.Append("api/Order/activate");
                     urlBuilder_.Append('?');
@@ -8881,7 +8673,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Order/pdf"
                     urlBuilder_.Append("api/Order/pdf");
                     urlBuilder_.Append('?');
@@ -8963,7 +8755,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Order/report"
                     urlBuilder_.Append("api/Order/report");
                     urlBuilder_.Append('?');
@@ -9190,21 +8982,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OrderItemClient : IOrderItemClient
+    public partial class OrderItemClient : NswagBase, IOrderItemClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public OrderItemClient(System.Net.Http.HttpClient httpClient)
+        public OrderItemClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -9214,17 +9001,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -9264,7 +9040,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/OrderItem/orderitem"
                     urlBuilder_.Append("api/OrderItem/orderitem");
 
@@ -9347,7 +9123,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/OrderItem/itemcreate"
                     urlBuilder_.Append("api/OrderItem/itemcreate");
 
@@ -9430,7 +9206,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/OrderItem/statusupdate"
                     urlBuilder_.Append("api/OrderItem/statusupdate");
 
@@ -9513,7 +9289,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/OrderItem/trackingupdate"
                     urlBuilder_.Append("api/OrderItem/trackingupdate");
 
@@ -9717,21 +9493,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PaymentClient : IPaymentClient
+    public partial class PaymentClient : NswagBase, IPaymentClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public PaymentClient(System.Net.Http.HttpClient httpClient)
+        public PaymentClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -9741,17 +9512,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -9790,7 +9550,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Payment/getpaymentbyid"
                     urlBuilder_.Append("api/Payment/getpaymentbyid");
                     urlBuilder_.Append('?');
@@ -10029,21 +9789,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PaymentMethodsClient : IPaymentMethodsClient
+    public partial class PaymentMethodsClient : NswagBase, IPaymentMethodsClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public PaymentMethodsClient(System.Net.Http.HttpClient httpClient)
+        public PaymentMethodsClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -10053,17 +9808,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -10096,7 +9840,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/PaymentMethods/paymentmethodsearch"
                     urlBuilder_.Append("api/PaymentMethods/paymentmethodsearch");
                     urlBuilder_.Append('?');
@@ -10178,7 +9922,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/PaymentMethods/getpaymentmethodbyid"
                     urlBuilder_.Append("api/PaymentMethods/getpaymentmethodbyid");
                     urlBuilder_.Append('?');
@@ -10267,7 +10011,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/PaymentMethods/create"
                     urlBuilder_.Append("api/PaymentMethods/create");
 
@@ -10350,7 +10094,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/PaymentMethods/edit"
                     urlBuilder_.Append("api/PaymentMethods/edit");
 
@@ -10433,7 +10177,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/PaymentMethods/priority"
                     urlBuilder_.Append("api/PaymentMethods/priority");
 
@@ -10510,7 +10254,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/PaymentMethods/delete"
                     urlBuilder_.Append("api/PaymentMethods/delete");
                     urlBuilder_.Append('?');
@@ -10720,21 +10464,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PersonClient : IPersonClient
+    public partial class PersonClient : NswagBase, IPersonClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public PersonClient(System.Net.Http.HttpClient httpClient)
+        public PersonClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -10744,17 +10483,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -10793,7 +10521,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Person/personinfo"
                     urlBuilder_.Append("api/Person/personinfo");
                     urlBuilder_.Append('?');
@@ -11042,21 +10770,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ProductClient : IProductClient
+    public partial class ProductClient : NswagBase, IProductClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public ProductClient(System.Net.Http.HttpClient httpClient)
+        public ProductClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -11066,17 +10789,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -11109,7 +10821,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Product/products"
                     urlBuilder_.Append("api/Product/products");
                     urlBuilder_.Append('?');
@@ -11219,7 +10931,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Product/productbyid"
                     urlBuilder_.Append("api/Product/productbyid");
                     urlBuilder_.Append('?');
@@ -11308,7 +11020,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Product/createupdate"
                     urlBuilder_.Append("api/Product/createupdate");
 
@@ -11384,7 +11096,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Product/report"
                     urlBuilder_.Append("api/Product/report");
                     urlBuilder_.Append('?');
@@ -11607,21 +11319,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ReferralGuideClient : IReferralGuideClient
+    public partial class ReferralGuideClient : NswagBase, IReferralGuideClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public ReferralGuideClient(System.Net.Http.HttpClient httpClient)
+        public ReferralGuideClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -11631,17 +11338,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -11681,7 +11377,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/ReferralGuide/create"
                     urlBuilder_.Append("api/ReferralGuide/create");
 
@@ -11764,7 +11460,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/ReferralGuide/update"
                     urlBuilder_.Append("api/ReferralGuide/update");
 
@@ -11840,7 +11536,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/ReferralGuide/referralguidebyid"
                     urlBuilder_.Append("api/ReferralGuide/referralguidebyid");
                     urlBuilder_.Append('?');
@@ -11922,7 +11618,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/ReferralGuide/referralguidepdf"
                     urlBuilder_.Append("api/ReferralGuide/referralguidepdf");
                     urlBuilder_.Append('?');
@@ -12175,21 +11871,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class RolesClient : IRolesClient
+    public partial class RolesClient : NswagBase, IRolesClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public RolesClient(System.Net.Http.HttpClient httpClient)
+        public RolesClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -12199,17 +11890,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -12242,7 +11922,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/list-roles"
                     urlBuilder_.Append("api/Roles/list-roles");
 
@@ -12318,7 +11998,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/list-permissions"
                     urlBuilder_.Append("api/Roles/list-permissions");
 
@@ -12394,7 +12074,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/view"
                     urlBuilder_.Append("api/Roles/view");
                     urlBuilder_.Append('?');
@@ -12476,7 +12156,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/edit"
                     urlBuilder_.Append("api/Roles/edit");
                     urlBuilder_.Append('?');
@@ -12565,7 +12245,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/edit"
                     urlBuilder_.Append("api/Roles/edit");
 
@@ -12648,7 +12328,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/create"
                     urlBuilder_.Append("api/Roles/create");
 
@@ -12731,7 +12411,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/delete"
                     urlBuilder_.Append("api/Roles/delete");
 
@@ -12807,7 +12487,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Roles/ListAllUsers"
                     urlBuilder_.Append("api/Roles/ListAllUsers");
 
@@ -13187,21 +12867,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SettingClient : ISettingClient
+    public partial class SettingClient : NswagBase, ISettingClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public SettingClient(System.Net.Http.HttpClient httpClient)
+        public SettingClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -13211,17 +12886,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -13254,7 +12918,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/banksearch"
                     urlBuilder_.Append("api/Setting/banksearch");
 
@@ -13330,7 +12994,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/bankbyid"
                     urlBuilder_.Append("api/Setting/bankbyid");
                     urlBuilder_.Append('?');
@@ -13419,7 +13083,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/bankcreate"
                     urlBuilder_.Append("api/Setting/bankcreate");
 
@@ -13502,7 +13166,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/bankupdate"
                     urlBuilder_.Append("api/Setting/bankupdate");
 
@@ -13585,7 +13249,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/cloudstoragecreate"
                     urlBuilder_.Append("api/Setting/cloudstoragecreate");
 
@@ -13661,7 +13325,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/smtp"
                     urlBuilder_.Append("api/Setting/smtp");
                     urlBuilder_.Append('?');
@@ -13750,7 +13414,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/smtpcreate"
                     urlBuilder_.Append("api/Setting/smtpcreate");
 
@@ -13833,7 +13497,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/smtpupdate"
                     urlBuilder_.Append("api/Setting/smtpupdate");
 
@@ -13909,7 +13573,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/generalconfiguration"
                     urlBuilder_.Append("api/Setting/generalconfiguration");
                     urlBuilder_.Append('?');
@@ -14007,7 +13671,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/orderconfiguration"
                     urlBuilder_.Append("api/Setting/orderconfiguration");
 
@@ -14083,7 +13747,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/orderitemconfiguration"
                     urlBuilder_.Append("api/Setting/orderitemconfiguration");
 
@@ -14159,7 +13823,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/sriconfiguration"
                     urlBuilder_.Append("api/Setting/sriconfiguration");
 
@@ -14235,7 +13899,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/s3configuration"
                     urlBuilder_.Append("api/Setting/s3configuration");
 
@@ -14311,7 +13975,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/smtpconfiguration"
                     urlBuilder_.Append("api/Setting/smtpconfiguration");
 
@@ -14394,7 +14058,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/generalcreateupdate"
                     urlBuilder_.Append("api/Setting/generalcreateupdate");
 
@@ -14470,7 +14134,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/counter"
                     urlBuilder_.Append("api/Setting/counter");
                     urlBuilder_.Append('?');
@@ -14559,7 +14223,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/countercreateupdate"
                     urlBuilder_.Append("api/Setting/countercreateupdate");
 
@@ -14635,7 +14299,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/currentmonths"
                     urlBuilder_.Append("api/Setting/currentmonths");
 
@@ -14718,7 +14382,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/orderitemconfigurationupdate"
                     urlBuilder_.Append("api/Setting/orderitemconfigurationupdate");
 
@@ -14801,7 +14465,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/orderconfigurationupdate"
                     urlBuilder_.Append("api/Setting/orderconfigurationupdate");
 
@@ -14884,7 +14548,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/sricreateupdate"
                     urlBuilder_.Append("api/Setting/sricreateupdate");
 
@@ -14967,7 +14631,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/checkcertificate"
                     urlBuilder_.Append("api/Setting/checkcertificate");
 
@@ -15043,7 +14707,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/globalconfiguration"
                     urlBuilder_.Append("api/Setting/globalconfiguration");
                     urlBuilder_.Append('?');
@@ -15132,7 +14796,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/receivetrace"
                     urlBuilder_.Append("api/Setting/receivetrace");
 
@@ -15208,7 +14872,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/healthy"
                     urlBuilder_.Append("api/Setting/healthy");
 
@@ -15284,7 +14948,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/userpreference"
                     urlBuilder_.Append("api/Setting/userpreference");
                     urlBuilder_.Append('?');
@@ -15373,7 +15037,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Setting/userpreference"
                     urlBuilder_.Append("api/Setting/userpreference");
 
@@ -15669,21 +15333,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SriClient : ISriClient
+    public partial class SriClient : NswagBase, ISriClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public SriClient(System.Net.Http.HttpClient httpClient)
+        public SriClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -15693,17 +15352,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -15743,7 +15391,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/signauthorizesri"
                     urlBuilder_.Append("api/Sri/signauthorizesri");
 
@@ -15819,7 +15467,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/documentsequential"
                     urlBuilder_.Append("api/Sri/documentsequential");
                     urlBuilder_.Append('?');
@@ -15916,7 +15564,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/establecimientocreate"
                     urlBuilder_.Append("api/Sri/establecimientocreate");
 
@@ -15999,7 +15647,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/establecimientoupdate"
                     urlBuilder_.Append("api/Sri/establecimientoupdate");
 
@@ -16082,7 +15730,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/establecimientobyid"
                     urlBuilder_.Append("api/Sri/establecimientobyid");
 
@@ -16158,7 +15806,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/establecimientosearch"
                     urlBuilder_.Append("api/Sri/establecimientosearch");
                     urlBuilder_.Append('?');
@@ -16247,7 +15895,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/puntoemisioncreate"
                     urlBuilder_.Append("api/Sri/puntoemisioncreate");
 
@@ -16330,7 +15978,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/puntoemisionupdate"
                     urlBuilder_.Append("api/Sri/puntoemisionupdate");
 
@@ -16406,7 +16054,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/puntoemisionsearch"
                     urlBuilder_.Append("api/Sri/puntoemisionsearch");
                     urlBuilder_.Append('?');
@@ -16488,7 +16136,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/taxes"
                     urlBuilder_.Append("api/Sri/taxes");
 
@@ -16564,7 +16212,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/documentssearch"
                     urlBuilder_.Append("api/Sri/documentssearch");
                     urlBuilder_.Append('?');
@@ -16685,7 +16333,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/sendemaildocument"
                     urlBuilder_.Append("api/Sri/sendemaildocument");
 
@@ -16768,7 +16416,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/sendwhatsappdocument"
                     urlBuilder_.Append("api/Sri/sendwhatsappdocument");
 
@@ -16844,7 +16492,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/rucinfo"
                     urlBuilder_.Append("api/Sri/rucinfo");
                     urlBuilder_.Append('?');
@@ -16926,7 +16574,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Sri/establecimientosinfo"
                     urlBuilder_.Append("api/Sri/establecimientosinfo");
                     urlBuilder_.Append('?');
@@ -17186,21 +16834,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TeamClient : ITeamClient
+    public partial class TeamClient : NswagBase, ITeamClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public TeamClient(System.Net.Http.HttpClient httpClient)
+        public TeamClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -17210,17 +16853,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -17253,7 +16885,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/getparent"
                     urlBuilder_.Append("api/Team/getparent");
                     urlBuilder_.Append('?');
@@ -17333,7 +16965,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/getchildren"
                     urlBuilder_.Append("api/Team/getchildren");
                     urlBuilder_.Append('?');
@@ -17413,7 +17045,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/getdescendants"
                     urlBuilder_.Append("api/Team/getdescendants");
                     urlBuilder_.Append('?');
@@ -17493,7 +17125,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/changeparent"
                     urlBuilder_.Append("api/Team/changeparent");
                     urlBuilder_.Append('?');
@@ -17577,7 +17209,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/getdepthlevel"
                     urlBuilder_.Append("api/Team/getdepthlevel");
                     urlBuilder_.Append('?');
@@ -17657,7 +17289,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/getalldepthlevel"
                     urlBuilder_.Append("api/Team/getalldepthlevel");
                     urlBuilder_.Append('?');
@@ -17737,7 +17369,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/getallhierarchyid"
                     urlBuilder_.Append("api/Team/getallhierarchyid");
 
@@ -17812,7 +17444,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/createroot"
                     urlBuilder_.Append("api/Team/createroot");
                     urlBuilder_.Append('?');
@@ -17893,7 +17525,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Team/createchild"
                     urlBuilder_.Append("api/Team/createchild");
                     urlBuilder_.Append('?');
@@ -18148,21 +17780,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TenantClient : ITenantClient
+    public partial class TenantClient : NswagBase, ITenantClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public TenantClient(System.Net.Http.HttpClient httpClient)
+        public TenantClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -18172,17 +17799,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -18216,7 +17832,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/clearcache"
                     urlBuilder_.Append("api/Tenant/clearcache");
                     urlBuilder_.Append('?');
@@ -18298,7 +17914,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/tenants"
                     urlBuilder_.Append("api/Tenant/tenants");
 
@@ -18374,7 +17990,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/rolenamesfortenants"
                     urlBuilder_.Append("api/Tenant/rolenamesfortenants");
 
@@ -18457,7 +18073,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/create"
                     urlBuilder_.Append("api/Tenant/create");
 
@@ -18533,7 +18149,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/setupforupdate"
                     urlBuilder_.Append("api/Tenant/setupforupdate");
                     urlBuilder_.Append('?');
@@ -18622,7 +18238,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/edit"
                     urlBuilder_.Append("api/Tenant/edit");
 
@@ -18698,7 +18314,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/delete"
                     urlBuilder_.Append("api/Tenant/delete");
                     urlBuilder_.Append('?');
@@ -18787,7 +18403,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Tenant/delete"
                     urlBuilder_.Append("api/Tenant/delete");
 
@@ -18992,21 +18608,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TransactionClient : ITransactionClient
+    public partial class TransactionClient : NswagBase, ITransactionClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public TransactionClient(System.Net.Http.HttpClient httpClient)
+        public TransactionClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -19016,17 +18627,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -19059,7 +18659,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Transaction/transactions"
                     urlBuilder_.Append("api/Transaction/transactions");
                     urlBuilder_.Append('?');
@@ -19168,7 +18768,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/Transaction/depositcreate"
                     urlBuilder_.Append("api/Transaction/depositcreate");
 
@@ -19440,21 +19040,16 @@ namespace Jiban.Nswag
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserClient : IUserClient
+    public partial class UserClient : NswagBase, IUserClient
     {
-        #pragma warning disable 8618
-        private string _baseUrl;
-        #pragma warning restore 8618
-
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
         private System.Text.Json.JsonSerializerOptions _instanceSettings;
 
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public UserClient(System.Net.Http.HttpClient httpClient)
+        public UserClient(NswagConfiguration configuration, System.Net.Http.HttpClient httpClient) : base(configuration)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://apiqa.jiban.ec:44361";
             _httpClient = httpClient;
             Initialize();
         }
@@ -19464,17 +19059,6 @@ namespace Jiban.Nswag
             var settings = new System.Text.Json.JsonSerializerOptions();
             UpdateJsonSerializerSettings(settings);
             return settings;
-        }
-
-        public string BaseUrl
-        {
-            get { return _baseUrl; }
-            set
-            {
-                _baseUrl = value;
-                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-                    _baseUrl += '/';
-            }
         }
 
         protected System.Text.Json.JsonSerializerOptions JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -19514,7 +19098,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/create"
                     urlBuilder_.Append("api/User/create");
 
@@ -19607,7 +19191,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/edit"
                     urlBuilder_.Append("api/User/edit");
 
@@ -19689,7 +19273,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/users"
                     urlBuilder_.Append("api/User/users");
                     urlBuilder_.Append('?');
@@ -19801,7 +19385,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/getuserbytoken"
                     urlBuilder_.Append("api/User/getuserbytoken");
 
@@ -19883,7 +19467,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/getuserbyid"
                     urlBuilder_.Append("api/User/getuserbyid");
                     urlBuilder_.Append('?');
@@ -19982,7 +19566,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/availableemail"
                     urlBuilder_.Append("api/User/availableemail");
 
@@ -20065,7 +19649,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/availabledocument"
                     urlBuilder_.Append("api/User/availabledocument");
 
@@ -20141,7 +19725,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/delete"
                     urlBuilder_.Append("api/User/delete");
                     urlBuilder_.Append('?');
@@ -20223,7 +19807,7 @@ namespace Jiban.Nswag
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/octet-stream"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                
                     // Operation Path: "api/User/report"
                     urlBuilder_.Append("api/User/report");
                     urlBuilder_.Append('?');
