@@ -1,4 +1,4 @@
-name: API JIBAN PRODUCTION
+name: JIBAN EVENT PRODUCTION
 on:
   workflow_dispatch:
     inputs:
@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DOTNET_CORE_VERSION: 9.0.x
+      DOTNET_CORE_VERSION: 10.0.x
       PORTHTTPS: ${{secrets.PORTHTTPS}}
       TZ: America/Guayaquil
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
@@ -24,7 +24,7 @@ jobs:
       - name: Set up .NET Core SDK
         uses: actions/setup-dotnet@v5.0.0
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: '10.0.x'
           
       - name: Check out code
         uses: actions/checkout@v5.0.0
@@ -42,7 +42,7 @@ jobs:
       - name: Generate IMAGE_TAG
         id: generate-tag
         run: |
-          IMAGE_TAG="ghcr.io/raulidavid/jiban-backend:production-v$(date +%Y.%m.%d)-${{ github.run_number }}"
+          IMAGE_TAG="ghcr.io/raulidavid/jiban-event:production-v$(date +%Y.%m.%d)-${{ github.run_number }}"
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
           echo "image-tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
           echo "Generated tag: $IMAGE_TAG"
