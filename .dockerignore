@@ -1,30 +1,39 @@
-**/.classpath
-**/.dockerignore
-**/.env
+# === Git and Docker ===
 **/.git
 **/.gitignore
-**/.project
-**/.settings
-**/.toolstarget
-**/.vs
-**/.vscode
-**/*.*proj.user
-**/*.dbmdl
-**/*.jfm
-**/azds.yaml
-**/bin
-**/charts
-**/docker-compose*
+**/.gitattributes
+**/.dockerignore
 **/Dockerfile*
-**/node_modules
-**/npm-debug.log
-**/obj
-**/secrets.dev.yaml
-**/values.dev.yaml
+!src/Jiban.Api/Dockerfile.production
+**/docker-compose*
+**/.env*
+**/secrets.*.yaml
+
+# === Documentation ===
 LICENSE
 README.md
-!**/.gitignore
-!.git/HEAD
-!.git/config
-!.git/packed-refs
-!.git/refs/heads/**
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+**/docs
+**/*.md
+
+# === .NET build output ===
+**/bin/
+**/obj/
+**/TestResults/
+**/out/
+**/coverage/
+**/*.user
+**/*.suo
+**/*.dbmdl
+**/*.log
+**/*.tlog
+
+# === Node / Frontend ===
+**/node_modules/
+**/dist/
+**/build/
+
+# === AppSettings ===
+**/appsettings.*.json
+!**/appsettings.json
