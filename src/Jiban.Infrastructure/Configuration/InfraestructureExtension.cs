@@ -26,7 +26,6 @@ namespace Jiban.Infrastructure.Configuration
         {
             
             services.AddScoped<IElectronicDocService, ElectronicDocService>();
-            services.AddScoped<ISriClient, SriClient>();
             services.AddSingleton<ITokenAccessor, RuntimeTokenAccessor>();
             services.AddTransient<DynamicJwtHandler>();
 
@@ -46,7 +45,7 @@ namespace Jiban.Infrastructure.Configuration
             {
                 ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
             });
-
+            services.AddScoped<ISriClient, SriClient>();
             return services;
         }
 
